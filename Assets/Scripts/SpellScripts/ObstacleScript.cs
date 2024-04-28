@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellManagerScript : MonoBehaviour
+public class ObstacleScript : MonoBehaviour
 {
+    public float durationSec;
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(ObstacleTimer());
     }
 
     // Update is called once per frame
@@ -16,11 +17,9 @@ public class SpellManagerScript : MonoBehaviour
         
     }
 
-    public GameObject[] Spells;
-
-    public void Cast(int type, GameObject owner)
+    IEnumerator ObstacleTimer()
     {
-        Instantiate(Spells[type], owner.transform);
-        
+        yield return new WaitForSeconds(durationSec);
+        Destroy(gameObject);
     }
 }

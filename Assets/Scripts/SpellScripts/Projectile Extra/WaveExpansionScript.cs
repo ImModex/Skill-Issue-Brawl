@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellManagerScript : MonoBehaviour
+public class WaveExpansionScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,14 +13,6 @@ public class SpellManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    public GameObject[] Spells;
-
-    public void Cast(int type, GameObject owner)
-    {
-        Instantiate(Spells[type], owner.transform);
-        
+        this.transform.localScale += new Vector3(2,0,0) * Time.deltaTime;
     }
 }

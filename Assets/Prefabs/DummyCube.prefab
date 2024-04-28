@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1799607592760189662}
   - component: {fileID: 8561365283369107623}
   - component: {fileID: 7996589274314225902}
+  - component: {fileID: -6214521252194939475}
   m_Layer: 0
   m_Name: DummyCube
   m_TagString: Untagged
@@ -146,3 +147,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-6214521252194939475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980595800202914636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b61ead0106d9084eb98b5e7b5cc433d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  damageMultiplyer: 0

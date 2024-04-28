@@ -5,6 +5,7 @@ using UnityEngine;
 public class ExplosionScript : MonoBehaviour
 {
     public int damage;
+    //Explosion doesnt distinguish between Friend and Foe
     void Start()
     {
         StartCoroutine(Explosiontimer());
@@ -13,9 +14,13 @@ public class ExplosionScript : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Explosion");
-        HealthScript HP = other.gameObject.GetComponent<HealthScript>();
-        HP.Damage(damage);
+        if(other.CompareTag("Player"))
+        {
+            Debug.Log("Explosion");
+            HealthScript HP = other.gameObject.GetComponent<HealthScript>();
+            HP.Damage(damage); 
+        }
+       
     }
 
     IEnumerator Explosiontimer()

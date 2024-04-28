@@ -14,9 +14,27 @@ public class SpellSlingerTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown("1"))
         {
-            spellManager.Cast(0, transform.position, transform.rotation);
+            spellManager.Cast(0, this.gameObject);
+        }
+
+        if(Input.GetKeyDown("2"))
+        {
+            spellManager.Cast(1, this.gameObject);
+        }
+
+        if(Input.GetKeyDown("3"))
+        {
+            spellManager.Cast(2, this.gameObject);
+        }
+        if(Input.GetKeyDown("4"))
+        {
+            spellManager.Cast(3, this.gameObject);
+        }
+        if(Input.GetKeyDown("5"))
+        {
+            spellManager.Cast(4, this.gameObject);
         }
     }
 }
