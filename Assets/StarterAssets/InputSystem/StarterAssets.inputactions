@@ -269,6 +269,17 @@
                     "action": "SelectSpell",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ac2c456-e5b6-493a-b68e-4247d9a4928d",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SelectSpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

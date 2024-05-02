@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 5612151316389100393}
   - component: {fileID: 7669113521909108360}
   - component: {fileID: 7202227810639747601}
+  - component: {fileID: 7255512602615682107}
   m_Layer: 0
   m_Name: Magic Wall
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,3 +148,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   durationSec: 4
+--- !u!114 &7255512602615682107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447991023396530285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0bd36743724c24c90b09e537e4e1d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

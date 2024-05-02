@@ -16,6 +16,7 @@ namespace StarterAssets
 	{
 		// Temp
 		private int _spellSelection = 0;
+		private SpellManagerScript spellManager;
 
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -135,7 +136,8 @@ namespace StarterAssets
 		private void Start()
 		{
 			_cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-
+	
+			spellManager = GameObject.Find("SpellManager").GetComponent<SpellManagerScript>();
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
@@ -218,7 +220,7 @@ namespace StarterAssets
 		{
 			if (_input.fire)
 			{
-				//spellManager.Cast(_spellSelection, this.gameObject);
+				spellManager.Cast(_spellSelection, this.gameObject);
 				Debug.Log("woohoo i did a shoot");
 				_input.fire = false;
 			}
