@@ -28,10 +28,12 @@ public class SpellSlingerTest : MonoBehaviour
         {
             spellManager.Cast(2, this.gameObject);
         }
+
         if(Input.GetKeyDown("4"))
         {
             spellManager.Cast(3, this.gameObject);
         }
+        
         if(Input.GetKeyDown("5"))
         {
             spellManager.Cast(4, this.gameObject);

@@ -30,7 +30,6 @@ public class DebuffZoneScript : MonoBehaviour
     //OnTriggerExit is not called Retarded fix but it is a common problem
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exit");
         if(other.CompareTag("Player"))
         {
             HealthScript HP = other.gameObject.GetComponent<HealthScript>();

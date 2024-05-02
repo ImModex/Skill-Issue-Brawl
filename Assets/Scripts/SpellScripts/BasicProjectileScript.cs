@@ -18,23 +18,25 @@ public class BasicProjectileScript : MonoBehaviour
     {
         startpos = transform.position;
         caster = transform.parent.gameObject;
+        transform.parent = null;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision");
-        
-        if(other.CompareTag("Player"))
+        if(other.gameObject = caster)
         {
-            
-            HealthScript HP = other.gameObject.GetComponent<HealthScript>();
-            HP.Damage(damage);
-             
+            if(other.CompareTag("Player"))
+            {
+                
+                HealthScript HP = other.gameObject.GetComponent<HealthScript>();
+                HP.Damage(damage);
+                    
+            }
+            if(destroyOnHit)
+            {
+                Death();
+            } 
         }
-        if(destroyOnHit)
-        {
-            Death();
-        } 
     }
     // Update is called once per frame
     void Update()
