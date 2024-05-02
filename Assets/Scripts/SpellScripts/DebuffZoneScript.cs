@@ -13,8 +13,9 @@ public class DebuffZoneScript : MonoBehaviour
 
     void Start()
     {
-        transform.position += new Vector3 (0, 0, range);
+        transform.Translate(Vector3.forward * range) ;
         StartCoroutine(Debufftimer());
+        transform.parent = null;
     }
     void OnTriggerEnter(Collider other)
     {

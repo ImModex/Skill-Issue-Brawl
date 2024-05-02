@@ -8,7 +8,7 @@ public class SpellSlingerTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spellManager = GameObject.Find("SpellManager").GetComponent<SpellManagerScript>();;
+        spellManager = GameObject.Find("SpellManager").GetComponent<SpellManagerScript>();
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class SpellSlingerTest : MonoBehaviour
         {
             spellManager.Cast(3, this.gameObject);
         }
-        
+
         if(Input.GetKeyDown("5"))
         {
             spellManager.Cast(4, this.gameObject);

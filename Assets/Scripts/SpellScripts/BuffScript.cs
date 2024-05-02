@@ -17,7 +17,6 @@ public class BuffScript : MonoBehaviour
  
     IEnumerator BuffCaster()
     {
-        Debug.Log("Buff");
         Statscript Stats = caster.gameObject.GetComponent<Statscript>();
         Stats.moveSpeedMultiplyer += moveSpeedMultiplyerChange;
         Stats.damageMultiplyer += damageMultiplyerChange;

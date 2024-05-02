@@ -9,6 +9,7 @@ public class ObstacleScript : MonoBehaviour
     void Start()
     {
         StartCoroutine(ObstacleTimer());
+        transform.parent = null;
     }
 
     // Update is called once per frame
