@@ -13,6 +13,7 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool fire;
+		public bool selectSpell;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -49,6 +50,11 @@ namespace StarterAssets
 		{
 			FireInput(value.isPressed);
 		}
+
+		public void OnSelectSpell(InputValue value)
+		{
+			SpellSelectInput(value.isPressed);
+		}
 #endif
 
 
@@ -75,6 +81,11 @@ namespace StarterAssets
 		public void FireInput(bool newFireState)
 		{
 			fire = newFireState;
+		}
+
+		public void SpellSelectInput(bool newSpellSelectState)
+		{
+			selectSpell = newSpellSelectState;
 		}
 
 		private void OnApplicationFocus()

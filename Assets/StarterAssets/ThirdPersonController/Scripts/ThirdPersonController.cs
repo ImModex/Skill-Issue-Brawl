@@ -14,6 +14,9 @@ namespace StarterAssets
 #endif
 	public class ThirdPersonController : MonoBehaviour
 	{
+		// Temp
+		private int _spellSelection = 0;
+
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 2.0f;
@@ -156,6 +159,7 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			SelectSpell();
 			Fire();
 		}
 
@@ -214,8 +218,22 @@ namespace StarterAssets
 		{
 			if (_input.fire)
 			{
+				//spellManager.Cast(_spellSelection, this.gameObject);
 				Debug.Log("woohoo i did a shoot");
 				_input.fire = false;
+			}
+		}
+
+		private void SelectSpell()
+		{
+			if (_input.selectSpell)
+			{
+				_spellSelection++;
+				_spellSelection %= 5;
+
+
+				Debug.Log("u changed spell. wow.");
+				_input.selectSpell = false;
 			}
 		}
 
