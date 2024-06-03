@@ -6,6 +6,15 @@
             "id": "f62a4b92-ef5e-4175-8f4c-c9075429d32c",
             "actions": [
                 {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "59549eef-57d0-4870-b817-e37446a580d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Move",
                     "type": "Value",
                     "id": "6bc1aaf4-b110-4ff7-891e-5b9fe6f32c4d",
@@ -60,9 +69,36 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Join",
+                    "name": "SelectSpell1",
                     "type": "Button",
-                    "id": "59549eef-57d0-4870-b817-e37446a580d3",
+                    "id": "bdfc4d58-6758-4de1-8e15-7d7f44ab0d19",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SelectSpell2",
+                    "type": "Button",
+                    "id": "eaaf65e8-d312-412b-989c-f463765090a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SelectSpell3",
+                    "type": "Button",
+                    "id": "c989a6de-0587-4678-bd78-5cbb3af8f702",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SelectSpell4",
+                    "type": "Button",
+                    "id": "2e5c3e8c-9626-4311-8050-26563369d082",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -281,17 +317,6 @@
                 },
                 {
                     "name": "",
-                    "id": "5ac2c456-e5b6-493a-b68e-4247d9a4928d",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "SelectSpell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "bb897203-7858-4760-88d6-a4312e9d750c",
                     "path": "<Keyboard>/anyKey",
                     "interactions": "",
@@ -309,6 +334,94 @@
                     "processors": "",
                     "groups": "",
                     "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69744766-2471-47c3-98fb-2ad7e98f3db5",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectSpell1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63969ca4-0a35-40b1-b267-78e7041adc71",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectSpell1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f849eeda-9f97-49c5-a3aa-626d4004ee4e",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectSpell2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86960c46-c450-4393-81f8-f5e7599af5be",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectSpell2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca99fabd-4ecd-4da3-b870-df7d8537c3f6",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectSpell3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "deb1ac1f-2d32-4c0a-8f65-477d02224f5f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectSpell3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2264321f-2f54-47cb-a205-a85c23515808",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectSpell4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "46d4b92e-1818-4132-82d1-43b015205175",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectSpell4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
