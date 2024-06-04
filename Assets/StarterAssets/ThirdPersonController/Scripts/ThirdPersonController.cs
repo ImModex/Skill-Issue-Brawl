@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -17,6 +18,22 @@ namespace StarterAssets
 		// Temp
 		private int _spellSelection = 0;
 		private SpellManagerScript spellManager;
+
+		public enum Button { North, East, South, West }
+		public enum Element { Fire, Water, Earth, Air }
+
+		/// <summary>
+		/// Buttons that were pressed in game.
+		/// For element combinations.
+		/// </summary>
+		public List<Button> SelectedButtons = new();
+
+		/// <summary>
+		/// Buttons mapped to the elements, that were selected by the player at the start of the game.
+		/// </summary>
+		public Dictionary<Button, Element> SelectedElements = new();
+
+
 
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -136,7 +153,7 @@ namespace StarterAssets
 		private void Start()
 		{
 			_cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-	
+
 			spellManager = GameObject.Find("SpellManager").GetComponent<SpellManagerScript>();
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
@@ -148,6 +165,7 @@ namespace StarterAssets
 #endif
 
 			AssignAnimationIDs();
+			AssignElementMapping();
 
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
@@ -161,6 +179,7 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			HandleElementSelection();
 			SelectSpell();
 			Fire();
 		}
@@ -178,6 +197,15 @@ namespace StarterAssets
 			_animIDFreeFall = Animator.StringToHash("FreeFall");
 			_animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
 			_animIDFire = Animator.StringToHash("Fire");
+		}
+
+		private void AssignElementMapping()
+		{
+			// TODO: change once main menu element selection has been implemented
+			SelectedElements.Add(Button.North, Element.Fire);
+			SelectedElements.Add(Button.East, Element.Water);
+			SelectedElements.Add(Button.South, Element.Earth);
+			SelectedElements.Add(Button.West, Element.Air);
 		}
 
 		private void GroundedCheck()
@@ -220,9 +248,21 @@ namespace StarterAssets
 		{
 			if (_input.fire)
 			{
-				spellManager.Cast(_spellSelection, this.gameObject);
-				Debug.Log("woohoo i did a shoot");
 				_input.fire = false;
+
+				//spellManager.Cast(_spellSelection, gameObject);
+
+				if (SelectedButtons.Count < 2)
+				{
+					spellManager.Cast(null, null, this);
+					SelectedButtons.Clear();
+					Debug.Log("Less than 2 elements had been selected -> default projectile. (button selection cleared)");
+					return;
+				}
+
+				spellManager.Cast(SelectedElements[SelectedButtons[0]], SelectedElements[SelectedButtons[1]], this);
+				Debug.Log($"woohoo i did a shoot with {SelectedElements[SelectedButtons[0]]} and {SelectedElements[SelectedButtons[1]]}. (button selection cleared)");
+				SelectedButtons.Clear();
 			}
 		}
 
@@ -238,6 +278,54 @@ namespace StarterAssets
 				_input.selectSpell = false;
 			}
 		}
+
+		private void HandleElementSelection()
+		{
+			if (_input.selectElement1)
+			{
+				Debug.Log("u selected element 1. SUBLIME.");
+				_input.selectElement1 = false;
+
+				AddElementToSelection(Button.North);
+			}
+
+			if (_input.selectElement2)
+			{
+				Debug.Log("u selected element 2. SUBLIME.");
+				_input.selectElement2 = false;
+
+				AddElementToSelection(Button.East);
+			}
+
+			if (_input.selectElement3)
+			{
+				Debug.Log("u selected element 3. SUBLIME.");
+				_input.selectElement3 = false;
+
+				AddElementToSelection(Button.South);
+			}
+
+			if (_input.selectElement4)
+			{
+				Debug.Log("u selected element 4. SUBLIME.");
+				_input.selectElement4 = false;
+
+				AddElementToSelection(Button.West);
+			}
+		}
+
+		private void AddElementToSelection(Button selectedElement)
+		{
+			if (SelectedButtons.Count >= 2)
+			{
+				Debug.Log($"nuh uh. only 2 elements can be selected. current selection {SelectedButtons[0]} and {SelectedButtons[1]}");
+				return;
+			}
+
+			SelectedButtons.Add(selectedElement);
+			Debug.Log($"element added to selection.");
+		}
+
 
 		private void Move()
 		{

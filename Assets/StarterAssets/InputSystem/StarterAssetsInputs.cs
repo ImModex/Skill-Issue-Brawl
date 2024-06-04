@@ -14,6 +14,10 @@ namespace StarterAssets
 		public bool sprint;
 		public bool fire;
 		public bool selectSpell;
+		public bool selectElement1;
+		public bool selectElement2;
+		public bool selectElement3;
+		public bool selectElement4;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -55,6 +59,26 @@ namespace StarterAssets
 		{
 			SpellSelectInput(value.isPressed);
 		}
+
+		public void OnSelectSpell1(InputValue value)
+		{
+			SelectElement1Input(value.isPressed);
+		}
+
+		public void OnSelectSpell2(InputValue value)
+		{
+			SelectElement2Input(value.isPressed);
+		}
+
+		public void OnSelectSpell3(InputValue value)
+		{
+			SelectElement3Input(value.isPressed);
+		}
+
+		public void OnSelectSpell4(InputValue value)
+		{
+			SelectElement4Input(value.isPressed);
+		}
 #endif
 
 
@@ -86,6 +110,26 @@ namespace StarterAssets
 		public void SpellSelectInput(bool newSpellSelectState)
 		{
 			selectSpell = newSpellSelectState;
+		}
+
+		public void SelectElement1Input(bool newSpellSelectState)
+		{
+			selectElement1 = newSpellSelectState;
+		}
+
+		public void SelectElement2Input(bool newSpellSelectState)
+		{
+			selectElement2 = newSpellSelectState;
+		}
+
+		public void SelectElement3Input(bool newSpellSelectState)
+		{
+			selectElement3 = newSpellSelectState;
+		}
+
+		public void SelectElement4Input(bool newSpellSelectState)
+		{
+			selectElement4 = newSpellSelectState;
 		}
 
 		private void OnApplicationFocus()
