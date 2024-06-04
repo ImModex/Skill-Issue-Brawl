@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -193,9 +193,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1247272710}
     m_Modifications:
+    - target: {fileID: -6133051341127699271, guid: 5a06a07a64996f0469ac0f6a9bd05d81, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5164303871606501801, guid: 5a06a07a64996f0469ac0f6a9bd05d81, type: 3}
       propertyPath: m_Name
       value: Obstacle_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271024621572151124, guid: 5a06a07a64996f0469ac0f6a9bd05d81, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419063042769029643, guid: 5a06a07a64996f0469ac0f6a9bd05d81, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614752132063903452, guid: 5a06a07a64996f0469ac0f6a9bd05d81, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8892918696757676850, guid: 5a06a07a64996f0469ac0f6a9bd05d81, type: 3}
       propertyPath: m_LocalPosition.x
@@ -298,6 +314,10 @@ PrefabInstance:
     - target: {fileID: 6578978560316152900, guid: 1a361ef62603b8c468ddd47279a583cc, type: 3}
       propertyPath: m_Name
       value: Tree_Cold
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005857619256592557, guid: 1a361ef62603b8c468ddd47279a583cc, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1125,6 +1145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_Cold (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7005857619256592557, guid: 1a361ef62603b8c468ddd47279a583cc, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1517,6 +1541,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4d207bc3cb2f7f446b1af7ebc75f3ad9, type: 2}
+    - target: {fileID: 6400000, guid: 5648c7aa655120f44aab862e4a038f3c, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1987,6 +2015,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_Cold (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7005857619256592557, guid: 1a361ef62603b8c468ddd47279a583cc, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2074,6 +2106,18 @@ PrefabInstance:
     - target: {fileID: 5164303871606501801, guid: 5a06a07a64996f0469ac0f6a9bd05d81, type: 3}
       propertyPath: m_Name
       value: Obstacle_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271024621572151124, guid: 5a06a07a64996f0469ac0f6a9bd05d81, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419063042769029643, guid: 5a06a07a64996f0469ac0f6a9bd05d81, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614752132063903452, guid: 5a06a07a64996f0469ac0f6a9bd05d81, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8892918696757676850, guid: 5a06a07a64996f0469ac0f6a9bd05d81, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2820,6 +2864,10 @@ PrefabInstance:
     - target: {fileID: 6578978560316152900, guid: 1a361ef62603b8c468ddd47279a583cc, type: 3}
       propertyPath: m_Name
       value: Tree Type1 04 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005857619256592557, guid: 1a361ef62603b8c468ddd47279a583cc, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
