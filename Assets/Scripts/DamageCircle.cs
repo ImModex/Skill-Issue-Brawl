@@ -13,7 +13,7 @@ public class DamageCircle : MonoBehaviour
     private Transform topTransform;
     private Transform bottomTransform;
     private Transform leftTransform;
-    private Transform righTransform;
+    private Transform rightTransform;
 
     private float circleShrinkSpeed;
 
@@ -26,12 +26,12 @@ public class DamageCircle : MonoBehaviour
     {
         instance = this;
         
-        circleShrinkSpeed = 10f;
+        circleShrinkSpeed = 2f;
        
         circleTransform = transform.Find("dz center");
         topTransform = transform.Find("dz top");
         leftTransform = transform.Find("dz left");
-        righTransform = transform.Find("dz right");
+        rightTransform = transform.Find("dz right");
         bottomTransform = transform.Find("dz bottom");
 
         SetCircleSize(new Vector3(0,0), new Vector3(48, 48, 48));
@@ -51,14 +51,18 @@ public class DamageCircle : MonoBehaviour
        circlePosition= circleTransform.localPosition;
        circleSize = size;
 
-   }
+       topTransform.localPosition = new Vector3(0, 0,54-((48-size.y)/2));
+       leftTransform.localPosition = new Vector3(-54 + ((48 - size.y) / 2),0);
+       rightTransform.localPosition = new Vector3( 54 - ((48 - size.y) / 2),0);
+       bottomTransform.localPosition = new Vector3(0, 0, -54 + ((48 - size.y) / 2));
+    }
 
    private bool IsOutsideCircle(Vector3 position)
    {
        return Vector3.Distance(position, circlePosition) > circleSize.x * .5f;
    }
 
-   //Static function to call from player
+   //Static function to call from player (losing HP)
    public static bool IsOutsideCircle_Static(Vector3 position)
    {
        return instance.IsOutsideCircle(position);
