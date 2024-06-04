@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9203392906878108256}
   - component: {fileID: 6883936512801724068}
   m_Layer: 0
-  m_Name: SelfBuff
+  m_Name: Fire Air
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b75d5ec7fddb224894648d2c47a6c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedMultiplyerChange: 2
-  damageMultiplyerChange: 2
+  moveSpeedMultiplyerChange: 1.5
   durationSec: 2
 --- !u!33 &9203392906878108256
 MeshFilter:

@@ -20,4 +20,6 @@ public class HealthScript : MonoBehaviour
     {
         Debug.Log(damage + "was Taken");
     }
+
+    
 }
