@@ -10,7 +10,6 @@ namespace StarterAssets
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
-		public bool jump;
 		public bool sprint;
 		public bool fire;
 		public bool selectSpell;
@@ -40,11 +39,6 @@ namespace StarterAssets
 			}
 		}
 
-		public void OnJump(InputValue value)
-		{
-			JumpInput(value.isPressed);
-		}
-
 		public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
@@ -55,27 +49,22 @@ namespace StarterAssets
 			FireInput(value.isPressed);
 		}
 
-		public void OnSelectSpell(InputValue value)
-		{
-			SpellSelectInput(value.isPressed);
-		}
-
-		public void OnSelectSpell1(InputValue value)
+		public void OnSelectElement1(InputValue value)
 		{
 			SelectElement1Input(value.isPressed);
 		}
 
-		public void OnSelectSpell2(InputValue value)
+		public void OnSelectElement2(InputValue value)
 		{
 			SelectElement2Input(value.isPressed);
 		}
 
-		public void OnSelectSpell3(InputValue value)
+		public void OnSelectElement3(InputValue value)
 		{
 			SelectElement3Input(value.isPressed);
 		}
 
-		public void OnSelectSpell4(InputValue value)
+		public void OnSelectElement4(InputValue value)
 		{
 			SelectElement4Input(value.isPressed);
 		}
@@ -90,11 +79,6 @@ namespace StarterAssets
 		public void LookInput(Vector2 newLookDirection)
 		{
 			look = newLookDirection;
-		}
-
-		public void JumpInput(bool newJumpState)
-		{
-			jump = newJumpState;
 		}
 
 		public void SprintInput(bool newSprintState)

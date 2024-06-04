@@ -33,15 +33,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "8c4abdf8-4099-493a-aa1a-129acec7c3df",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Sprint",
                     "type": "PassThrough",
                     "id": "980e881e-182c-404c-8cbf-3d09fdb48fef",
@@ -60,16 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SelectSpell",
-                    "type": "Button",
-                    "id": "59e1e23b-e459-4897-9766-8621ac95377c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SelectSpell1",
+                    "name": "SelectElement1",
                     "type": "Button",
                     "id": "bdfc4d58-6758-4de1-8e15-7d7f44ab0d19",
                     "expectedControlType": "Button",
@@ -78,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SelectSpell2",
+                    "name": "SelectElement2",
                     "type": "Button",
                     "id": "eaaf65e8-d312-412b-989c-f463765090a4",
                     "expectedControlType": "Button",
@@ -87,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SelectSpell3",
+                    "name": "SelectElement3",
                     "type": "Button",
                     "id": "c989a6de-0587-4678-bd78-5cbb3af8f702",
                     "expectedControlType": "Button",
@@ -96,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SelectSpell4",
+                    "name": "SelectElement4",
                     "type": "Button",
                     "id": "2e5c3e8c-9626-4311-8050-26563369d082",
                     "expectedControlType": "Button",
@@ -240,28 +222,6 @@
                 },
                 {
                     "name": "",
-                    "id": "1bd55a0b-761e-4ae4-89ae-8ec127e08a29",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9f973413-5e27-4239-acee-38c4a63feeba",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "dc65b89f-9bd3-43fb-92af-d0d87ba5faa4",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
@@ -306,17 +266,6 @@
                 },
                 {
                     "name": "",
-                    "id": "9972ad24-acc2-4790-9906-912a31698168",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "SelectSpell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "bb897203-7858-4760-88d6-a4312e9d750c",
                     "path": "<Keyboard>/anyKey",
                     "interactions": "",
@@ -344,7 +293,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSpell1",
+                    "action": "SelectElement1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -355,7 +304,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSpell1",
+                    "action": "SelectElement1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -366,7 +315,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSpell2",
+                    "action": "SelectElement2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -377,7 +326,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSpell2",
+                    "action": "SelectElement2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -388,7 +337,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSpell3",
+                    "action": "SelectElement3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -399,7 +348,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSpell3",
+                    "action": "SelectElement3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -410,7 +359,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSpell4",
+                    "action": "SelectElement4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -421,7 +370,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSpell4",
+                    "action": "SelectElement4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
