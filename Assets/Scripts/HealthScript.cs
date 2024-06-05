@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
 {
-    private Statscript Stats;
+    public Statscript Statscript;
+    public Slider HealthBar;
+    public TextMeshProUGUI HealthBarText;
     private int damagePerTick;
     // Start is called before the first frame update
     void Start()
     {
-        Stats = gameObject.GetComponent<Statscript>();
+        HealthBar.value = 1;
+        UpdateHealthBarText();
     }
 
     // Update is called once per frame
@@ -17,9 +22,29 @@ public class HealthScript : MonoBehaviour
     {
         
     }
+    
+    private float ScaleHealthToHealthBar()
+    {
+        return Statscript.currentHealth / Statscript.maxHealth;
+    }
+
+    private void UpdateHealthBarText()
+    {
+        HealthBarText.text = $"{Statscript.currentHealth} / {Statscript.maxHealth}";
+    }
 
     public void Damage(int damage)
     {
+        Statscript.currentHealth -= damage;
+
+        HealthBar.value = ScaleHealthToHealthBar();
+        UpdateHealthBarText();
+    
+        if (HealthBar.value <= 0)
+        {
+            Debug.Log("You died lmao");
+        }   
+        
         Debug.Log(damage + "was Taken");
     }
 
@@ -49,18 +74,18 @@ public class HealthScript : MonoBehaviour
 
     IEnumerator stun(float stundur)
     {
-        Stats.Stunned = true;
+        Statscript.Stunned = true;
         yield return new WaitForSeconds(stundur);
-        Stats.Stunned = false;
+        Statscript.Stunned = false;
         Debug.Log("Stunned false");
     }
 
     IEnumerator velocity(float dur, float mult)
     {
         Debug.Log("Ms to slow");
-        Stats.moveSpeedMultiplyer *= mult;
+        Statscript.moveSpeedMultiplyer *= mult;
         yield return new WaitForSeconds(dur);
-        Stats.moveSpeedMultiplyer /= mult;
+        Statscript.moveSpeedMultiplyer /= mult;
         Debug.Log("Ms to normal");
     }
 
