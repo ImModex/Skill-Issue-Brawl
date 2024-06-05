@@ -12,17 +12,12 @@ public class DebuffScript : MonoBehaviour
 
         if(other.CompareTag("Player"))
         {
-            Statscript Stats = other.gameObject.GetComponent<Statscript>();
-            StartCoroutine(Hit(Stats));
+            HealthScript HP = other.gameObject.GetComponent<HealthScript>();
+            HP.Slow(affecteddur, moveSpeedMultiplyerChange);
         }
     }
 
-    IEnumerator Hit (Statscript Stats)
-    {
-        Stats.moveSpeedMultiplyer *= moveSpeedMultiplyerChange;
-        yield return new WaitForSeconds(affecteddur);
-        Stats.moveSpeedMultiplyer /= moveSpeedMultiplyerChange;
-    }
+
 
 
 }

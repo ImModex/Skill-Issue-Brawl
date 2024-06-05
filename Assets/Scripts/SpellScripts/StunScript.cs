@@ -17,15 +17,11 @@ public class StunScript : MonoBehaviour
 
         if(other.CompareTag("Player")  && other.gameObject != caster)
         {
-            Statscript Stats = other.gameObject.GetComponent<Statscript>();
-            StartCoroutine(Hit(Stats));
+            HealthScript HP = other.gameObject.GetComponent<HealthScript>();
+            HP.Stun(stundur);
         }
     }
 
-    IEnumerator Hit (Statscript Stats)
-    {
-        Stats.Stunned = true;
-        yield return new WaitForSeconds(stundur);
-        Stats.Stunned = false;
-    }
+    
+
 }

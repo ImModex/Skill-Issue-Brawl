@@ -233,7 +233,7 @@ namespace StarterAssets
 			if (_input.selectSpell)
 			{
 				_spellSelection++;
-				_spellSelection %= 5;
+				_spellSelection %= 10;
 
 
 				Debug.Log("u changed spell. wow.");
