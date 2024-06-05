@@ -26,7 +26,7 @@ public class DebuffZoneScript : MonoBehaviour
     }
 
 
-    //OnTriggerExit is not called Retarded fix but it is a common problem
+    //OnTriggerExit is not called stupid fix but it is a common problem
     void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -39,7 +39,7 @@ public class DebuffZoneScript : MonoBehaviour
     IEnumerator Debufftimer()
     {
         yield return new WaitForSeconds(durationSec);
-        //OnTriggerExit is not called Retarded fix but it is a common problem
+        //OnTriggerExit is not called stupid fix but it is a common problem
         transform.Translate(new Vector3(0, -10, 0));
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
