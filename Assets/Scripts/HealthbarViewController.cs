@@ -6,7 +6,7 @@ public class HealthbarViewController : MonoBehaviour
 {
     public Camera camera;
     public Transform target;
-    public Vector3 offset;
+    //public Vector3 offset;
     
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,6 @@ public class HealthbarViewController : MonoBehaviour
     void Update()
     {
         transform.rotation = camera.transform.rotation;
-        //transform.position += target.position + offset;
+        //transform.position = target.position + offset;
     }
 }

@@ -1256,6 +1256,8 @@ GameObject:
   - component: {fileID: 3980242971952243703}
   - component: {fileID: 7637155111200239959}
   - component: {fileID: 7712348422552479819}
+  - component: {fileID: 539636255443479817}
+  - component: {fileID: 5332403172370850235}
   m_Layer: 8
   m_Name: Player2.0
   m_TagString: Player
@@ -1540,6 +1542,33 @@ MonoBehaviour:
   damageMultiplyer: 0
   maxHealth: 100
   currentHealth: 0
+--- !u!114 &539636255443479817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3893107665195392599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a0cca052739f24e94af0e2725a4982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minY: -3
+--- !u!114 &5332403172370850235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3893107665195392599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0396d7ddad6172d44a93d13633a92570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spell1: {fileID: 4996428095635743388}
+  spell2: {fileID: 4512341444086201652}
 --- !u!1 &3949845565348453701
 GameObject:
   m_ObjectHideFlags: 0
