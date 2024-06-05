@@ -20,8 +20,8 @@ public class DebuffZoneScript : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Statscript Stats = other.gameObject.GetComponent<Statscript>();
-            AffectStats(Stats);
+            HealthScript HP = other.gameObject.GetComponent<HealthScript>();
+            HP.Velocity(moveSpeedMultiplyerChange);
         }
     }
 
@@ -31,19 +31,9 @@ public class DebuffZoneScript : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Statscript Stats = other.gameObject.GetComponent<Statscript>();
-            DeAffectStats(Stats);
+            HealthScript HP = other.gameObject.GetComponent<HealthScript>();
+            HP.Velocity(1/moveSpeedMultiplyerChange);
         }
-    }
-
-    void AffectStats(Statscript Stats)
-    {
-        Stats.moveSpeedMultiplyer -= moveSpeedMultiplyerChange;
-    }
-
-    void DeAffectStats(Statscript Stats)
-    {
-        Stats.moveSpeedMultiplyer += moveSpeedMultiplyerChange;
     }
 
     IEnumerator Debufftimer()

@@ -26,6 +26,8 @@ public class ExplosionScript : MonoBehaviour
     IEnumerator Explosiontimer()
     {
         yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SphereCollider>().enabled = false;
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthScript : MonoBehaviour
 {
     private Statscript Stats;
+    private int damagePerTick;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,14 +23,28 @@ public class HealthScript : MonoBehaviour
         Debug.Log(damage + "was Taken");
     }
 
+    public void DamageOverTime(int damageot)
+    {
+        damagePerTick = damageot;
+        if(damagePerTick != 0)
+        {
+            StartCoroutine(damageOverTime());
+        }
+    }
+
     public void Stun(float stundur)
     {
         StartCoroutine(stun(stundur));
     }
 
-    public void Slow(float slowdur, float slowmult)
+    public void Velocity(float dur, float mult)
     {
-        StartCoroutine(slow(slowdur, slowmult));
+        StartCoroutine(velocity(dur, mult));
+    }
+
+    public void Velocity(float mult)
+    {
+        Stats.moveSpeedMultiplyer *= mult;
     }
 
     IEnumerator stun(float stundur)
@@ -40,13 +55,23 @@ public class HealthScript : MonoBehaviour
         Debug.Log("Stunned false");
     }
 
-    IEnumerator slow(float slowdur, float slowmult)
+    IEnumerator velocity(float dur, float mult)
     {
         Debug.Log("Ms to slow");
-        Stats.moveSpeedMultiplyer *= slowmult;
-        yield return new WaitForSeconds(slowdur);
-        Stats.moveSpeedMultiplyer /= slowmult;
+        Stats.moveSpeedMultiplyer *= mult;
+        yield return new WaitForSeconds(dur);
+        Stats.moveSpeedMultiplyer /= mult;
         Debug.Log("Ms to normal");
+    }
+
+    IEnumerator damageOverTime()
+    {
+        while(damagePerTick != 0)
+        {
+            Damage(damagePerTick);
+            yield return new WaitForSeconds(0.5f);
+        }
+        
     }
     
 }
