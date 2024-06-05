@@ -69,7 +69,7 @@ public class HealthScript : MonoBehaviour
 
     public void Velocity(float mult)
     {
-        Stats.moveSpeedMultiplyer *= mult;
+        Statscript.moveSpeedMultiplyer *= mult;
     }
 
     IEnumerator stun(float stundur)
