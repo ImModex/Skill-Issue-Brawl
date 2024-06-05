@@ -15,8 +15,6 @@ namespace StarterAssets
 #endif
 	public class ThirdPersonController : MonoBehaviour
 	{
-		// Temp
-		private int _spellSelection = 0;
 		private SpellManagerScript spellManager;
 
 		public enum Button { North, East, South, West }
@@ -170,7 +168,6 @@ namespace StarterAssets
 			GroundedCheck();
 			Move();
 			HandleElementSelection();
-			SelectSpell();
 			Fire();
 		}
 
@@ -244,28 +241,15 @@ namespace StarterAssets
 
 				if (SelectedButtons.Count < 2)
 				{
-					spellManager.Cast(null, null, this);
+					spellManager.Cast(null, null, gameObject);
 					SelectedButtons.Clear();
 					Debug.Log("Less than 2 elements had been selected -> default projectile. (button selection cleared)");
 					return;
 				}
 
-				spellManager.Cast(SelectedElements[SelectedButtons[0]], SelectedElements[SelectedButtons[1]], this);
+				spellManager.Cast(SelectedElements[SelectedButtons[0]], SelectedElements[SelectedButtons[1]], gameObject);
 				Debug.Log($"woohoo i did a shoot with {SelectedElements[SelectedButtons[0]]} and {SelectedElements[SelectedButtons[1]]}. (button selection cleared)");
 				SelectedButtons.Clear();
-			}
-		}
-
-		private void SelectSpell()
-		{
-			if (_input.selectSpell)
-			{
-				_spellSelection++;
-				_spellSelection %= 5;
-
-
-				Debug.Log("u changed spell. wow.");
-				_input.selectSpell = false;
 			}
 		}
 
@@ -273,33 +257,29 @@ namespace StarterAssets
 		{
 			if (_input.selectElement1)
 			{
-				Debug.Log("u selected element 1. SUBLIME.");
+				Debug.Log($"u selected {SelectedElements[Button.North]}. SUBLIME.");
 				_input.selectElement1 = false;
-
 				AddElementToSelection(Button.North);
 			}
 
 			if (_input.selectElement2)
 			{
-				Debug.Log("u selected element 2. SUBLIME.");
+				Debug.Log($"u selected {SelectedElements[Button.East]}. SUBLIME.");
 				_input.selectElement2 = false;
-
 				AddElementToSelection(Button.East);
 			}
 
 			if (_input.selectElement3)
 			{
-				Debug.Log("u selected element 3. SUBLIME.");
+				Debug.Log($"u selected {SelectedElements[Button.South]}. SUBLIME.");
 				_input.selectElement3 = false;
-
 				AddElementToSelection(Button.South);
 			}
 
 			if (_input.selectElement4)
 			{
-				Debug.Log("u selected element 4. SUBLIME.");
+				Debug.Log($"u selected {SelectedElements[Button.West]}. SUBLIME.");
 				_input.selectElement4 = false;
-
 				AddElementToSelection(Button.West);
 			}
 		}
@@ -311,9 +291,7 @@ namespace StarterAssets
 				Debug.Log($"nuh uh. only 2 elements can be selected. current selection {SelectedButtons[0]} and {SelectedButtons[1]}");
 				return;
 			}
-
 			SelectedButtons.Add(selectedElement);
-			Debug.Log($"element added to selection.");
 		}
 
 
