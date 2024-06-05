@@ -18,6 +18,6 @@ public class HealthbarViewController : MonoBehaviour
     void Update()
     {
         transform.rotation = camera.transform.rotation;
-        //transform.position += target.position + offset;
+        transform.position += target.position + offset;
     }
 }
