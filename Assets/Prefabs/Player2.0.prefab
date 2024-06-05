@@ -1538,7 +1538,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b61ead0106d9084eb98b5e7b5cc433d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedMultiplyer: 0
+  Stunned: 0
+  moveSpeedMultiplyer: 1
   damageMultiplyer: 0
   maxHealth: 100
   currentHealth: 0
@@ -2983,7 +2984,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   target: {fileID: 4272921737620479596}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &8305086181051528682
 GameObject:
   m_ObjectHideFlags: 0

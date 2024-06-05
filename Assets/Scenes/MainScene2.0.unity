@@ -443,6 +443,10 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 1349028594}
+    - target: {fileID: 7712348422552479819, guid: 3f6e6898ccdb34949813dc37033e6467, type: 3}
+      propertyPath: moveSpeedMultiplyer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
