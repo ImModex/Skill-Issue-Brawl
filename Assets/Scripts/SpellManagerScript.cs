@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class SpellManagerScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private AudioManager audioManager;
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public GameObject[] Spells;
@@ -21,6 +15,6 @@ public class SpellManagerScript : MonoBehaviour
     public void Cast(int type, GameObject owner)
     {
         Instantiate(Spells[type], owner.transform);
-        
+        audioManager.PlaySFX(audioManager.spellshot);
     }
 }
