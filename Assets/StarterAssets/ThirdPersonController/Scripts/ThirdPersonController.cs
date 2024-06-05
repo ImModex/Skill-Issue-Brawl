@@ -17,6 +17,7 @@ namespace StarterAssets
 		// Temp
 		private int _spellSelection = 0;
 		private SpellManagerScript spellManager;
+		private Statscript statschanges;
 
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -138,6 +139,7 @@ namespace StarterAssets
 			_cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
 	
 			spellManager = GameObject.Find("SpellManager").GetComponent<SpellManagerScript>();
+			statschanges = GetComponent<Statscript>();
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
@@ -239,6 +241,7 @@ namespace StarterAssets
 			}
 		}
 
+
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
@@ -254,6 +257,7 @@ namespace StarterAssets
 				targetSpeed = 0.0f;
 			}
 
+			
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
@@ -304,14 +308,14 @@ namespace StarterAssets
 
 			// move the player
 			_ = _controller.Move((targetDirection.normalized * (_speed * Time.deltaTime)) +
-							 (new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime));
+							 (new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime) /*+ statschanges.MoveImpair*/);
 
 			// update animator if using character
 			if (_hasAnimator)
 			{
 				_animator.SetFloat(_animIDSpeed, _animationBlend);
 				_animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-			}
+			}//*/
 		}
 
 		private void JumpAndGravity()

@@ -10,7 +10,7 @@ public class BasicProjectileScript : MonoBehaviour
     public bool destroyOnHit;
     public bool explosion;
     public GameObject Explosionobject;
-    private GameObject caster;
+    public GameObject caster;
 
     private Vector3 startpos;
     // Start is called before the first frame update

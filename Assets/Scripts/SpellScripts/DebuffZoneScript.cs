@@ -5,7 +5,6 @@ using UnityEngine;
 public class DebuffZoneScript : MonoBehaviour
 {
     public float moveSpeedMultiplyerChange;
-    public float damageMultiplyerChange;
     public float range;
     public float durationSec;
 
@@ -21,7 +20,6 @@ public class DebuffZoneScript : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            HealthScript HP = other.gameObject.GetComponent<HealthScript>();
             Statscript Stats = other.gameObject.GetComponent<Statscript>();
             AffectStats(Stats);
         }
@@ -33,7 +31,6 @@ public class DebuffZoneScript : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            HealthScript HP = other.gameObject.GetComponent<HealthScript>();
             Statscript Stats = other.gameObject.GetComponent<Statscript>();
             DeAffectStats(Stats);
         }
@@ -42,13 +39,11 @@ public class DebuffZoneScript : MonoBehaviour
     void AffectStats(Statscript Stats)
     {
         Stats.moveSpeedMultiplyer -= moveSpeedMultiplyerChange;
-        Stats.damageMultiplyer -= damageMultiplyerChange;
     }
 
     void DeAffectStats(Statscript Stats)
     {
         Stats.moveSpeedMultiplyer += moveSpeedMultiplyerChange;
-        Stats.damageMultiplyer += damageMultiplyerChange;
     }
 
     IEnumerator Debufftimer()
