@@ -3,6 +3,7 @@ using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
+using Assets.Scripts.Enums;
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -16,9 +17,6 @@ namespace StarterAssets
 	public class ThirdPersonController : MonoBehaviour
 	{
 		private SpellManagerScript spellManager;
-
-		public enum Button { North, East, South, West }
-		public enum Element { Fire, Water, Earth, Air }
 
 		/// <summary>
 		/// Buttons that were pressed in game.
