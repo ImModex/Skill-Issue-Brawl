@@ -15,9 +15,6 @@ public class HealthScript : MonoBehaviour
     {
         HealthBar.value = 1;
         UpdateHealthBarText();
-        
-        Debug.Log(Statscript.maxHealth);
-        Debug.Log(Statscript.currentHealth);
     }
 
     // Update is called once per frame
@@ -38,10 +35,6 @@ public class HealthScript : MonoBehaviour
 
     public void Damage(int damage)
     {
-        Debug.Log("I am here");
-        Debug.Log(gameObject.name);
-        Debug.Log(gameObject.tag);
-
         Statscript.currentHealth -= damage;
 
         HealthBar.value = ScaleHealthToHealthBar();
