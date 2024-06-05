@@ -15,7 +15,7 @@ public class DamageCircle : MonoBehaviour
     private Transform leftTransform;
     private Transform rightTransform;
 
-    private float circleShrinkSpeed;
+    public float circleShrinkSpeed;
 
     private Vector3 circleSize;
     private Vector3 circlePosition;
@@ -26,7 +26,7 @@ public class DamageCircle : MonoBehaviour
     {
         instance = this;
         
-        circleShrinkSpeed = 2f;
+        circleShrinkSpeed = 0.8f;
        
         circleTransform = transform.Find("dz center");
         topTransform = transform.Find("dz top");
