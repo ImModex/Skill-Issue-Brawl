@@ -30,7 +30,6 @@ namespace StarterAssets
 		public Dictionary<Button, Element> SelectedElements = new();
 
 
-
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 2.0f;
@@ -49,19 +48,8 @@ namespace StarterAssets
 		public AudioClip[] FootstepAudioClips;
 		[Range(0, 1)] public float FootstepAudioVolume = 0.5f;
 
-		[Space(10)]
-		[Tooltip("The height the player can jump")]
-		public float JumpHeight = 1.2f;
-
 		[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 		public float Gravity = -15.0f;
-
-		[Space(10)]
-		[Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
-		public float JumpTimeout = 0.50f;
-
-		[Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
-		public float FallTimeout = 0.15f;
 
 		[Header("Player Grounded")]
 		[Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
@@ -86,8 +74,6 @@ namespace StarterAssets
 		// animation IDs
 		private int _animIDSpeed;
 		private int _animIDGrounded;
-		private int _animIDJump;
-		private int _animIDFreeFall;
 		private int _animIDMotionSpeed;
 		private int _animIDFire;
 
@@ -109,8 +95,6 @@ namespace StarterAssets
 #else
 				return false;
 #endif
-
-
 
 		private void Awake()
 		{
@@ -151,8 +135,6 @@ namespace StarterAssets
 		{
 			_animIDSpeed = Animator.StringToHash("Speed");
 			_animIDGrounded = Animator.StringToHash("Grounded");
-			_animIDJump = Animator.StringToHash("Jump");
-			_animIDFreeFall = Animator.StringToHash("FreeFall");
 			_animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
 			_animIDFire = Animator.StringToHash("Fire");
 		}
@@ -235,7 +217,7 @@ namespace StarterAssets
 		{
 			if (SelectedButtons.Count >= 2)
 			{
-				Debug.Log($"nuh uh. only 2 elements can be selected. current selection {SelectedButtons[0]} and {SelectedButtons[1]}");
+				Debug.Log($"nuh uh. only 2 elements can be selected. current selection {SelectedElements[SelectedButtons[0]]} and {SelectedElements[SelectedButtons[1]]}");
 				return;
 			}
 			SelectedButtons.Add(selectedElement);
