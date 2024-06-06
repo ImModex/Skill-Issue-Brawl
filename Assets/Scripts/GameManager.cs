@@ -57,20 +57,32 @@ public class GameManager : MonoBehaviour
         Circleshrink = true;
         DamageCircle.Circleshrink = true;
     }
+
+    private IEnumerator RespawnLater(GameObject player)
+    {
+        player.SetActive(false);
+        yield return new WaitForSeconds(1);
+        
+        // Regen to full hp
+        HealthScript HP = player.GetComponent<HealthScript>();
+        HP.Regenerate();
+            
+            
+        // Teleport to random respawn location
+        TeleportPlayer(player, respawnPoints[Random.Range(0, respawnPoints.Count)].transform.position);
+
+        HP.ResetDOT();
+        player.SetActive(true);
+    }
     
     public void RespawnPlayer(GameObject player)
     {
         if(!Circleshrink)
         {
-            // Regen to full hp
-            HealthScript HP = player.GetComponent<HealthScript>();
-            HP.Regenerate();
-            
-            
-            // Teleport to random respawn location
-            TeleportPlayer(player, respawnPoints[Random.Range(0, respawnPoints.Count)].transform.position);
-
-            HP.ResetDOT();
+            if (player.activeSelf)
+            {
+                StartCoroutine(RespawnLater(player));
+            }
             
             playerStats.TryGetValue(player, out var stats);
 
