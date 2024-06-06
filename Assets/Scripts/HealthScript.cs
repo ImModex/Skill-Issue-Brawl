@@ -96,7 +96,11 @@ public class HealthScript : MonoBehaviour
 		{
 			Debug.Log("You died lmao");
 			gameManager.RespawnPlayer(gameObject);
-			caster?.AddKill();
+
+			if (Statscript != caster)
+			{
+				caster?.AddKill();
+			}
 		}
 
 		Debug.Log(damage + "was Taken");

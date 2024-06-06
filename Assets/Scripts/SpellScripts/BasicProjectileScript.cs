@@ -53,7 +53,8 @@ public class BasicProjectileScript : MonoBehaviour
 		if (explosion)
 		{
 			_ = transform.position;
-			_ = Instantiate(Explosionobject, transform.position, transform.rotation);
+			var explosion = Instantiate(Explosionobject, transform.position, transform.rotation);
+			explosion.GetComponent<ExplosionScript>().caster = caster.GetComponent<Statscript>();
 		}
 
 		Destroy(gameObject);

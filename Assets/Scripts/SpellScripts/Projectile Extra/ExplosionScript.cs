@@ -4,6 +4,7 @@ using UnityEngine;
 public class ExplosionScript : MonoBehaviour
 {
 	public int damage;
+	public Statscript caster;
 
 	//Explosion doesnt distinguish between Friend and Foe
 	private void Start()
@@ -18,7 +19,7 @@ public class ExplosionScript : MonoBehaviour
 		{
 			Debug.Log("Explosion");
 			HealthScript HP = other.gameObject.GetComponent<HealthScript>();
-			HP.Damage(damage, null);
+			HP.Damage(damage, caster);
 		}
 	}
 
