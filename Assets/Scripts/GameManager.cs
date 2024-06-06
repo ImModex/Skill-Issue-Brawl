@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Enums;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -80,9 +81,41 @@ public class GameManager : MonoBehaviour
                 Debug.Log(stats.deaths);
             }
         }else{
+            if (players.FindAll(p => p.activeSelf).Count <= 1) // Last player won
+            {
+                StartCoroutine(nameof(LoadYourAsyncScene));
+                return;
+            }
+            
             player.SetActive(false);
         }
+    }
+    
+    private IEnumerator LoadYourAsyncScene()
+    {
+        // Set the current Scene to be able to unload it later
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // The Application loads the Scene in the background at the same time as the current Scene.
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive);
+
+        // Wait until the last operation fully loads to return anything
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        foreach (var rootGameObject in SceneManager.GetSceneByBuildIndex(4).GetRootGameObjects())
+        {
+            if (rootGameObject.name != "WinController") continue;
+
+            var lastPlayer = players.Find(p => p.activeSelf);
+            playerStats.TryGetValue(lastPlayer, out var lastPlayerStats);
+            rootGameObject.GetComponent<WinController>().Display(lastPlayerStats!.kills.ToString(), lastPlayer.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Renderer>().material);
+        }
         
+        // Unload the previous Scene
+        SceneManager.UnloadSceneAsync(currentScene);
     }
 
     private void TeleportPlayer(GameObject player, Vector3 position)
