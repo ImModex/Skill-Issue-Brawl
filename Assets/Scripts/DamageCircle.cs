@@ -51,10 +51,9 @@ public class DamageCircle : MonoBehaviour
         var sh = SmokeRing.shape;
         sh.scale += sizeChangeVector * Time.deltaTime * circleShrinkSpeed;
 
-        if(sh.scale.x < 15)
+        if(size.y <10)
         {
-            var em = SmokeRing.emission;
-            em.enabled = false;
+            Circleshrink = false;
         }
 
         topTransform.localPosition = new Vector3(0, 0,54-((48-size.y)/2));
