@@ -14,6 +14,7 @@ public class HealthbarViewController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (cam == null) cam = Camera.main;
         transform.rotation = cam.transform.rotation;
     }
 }

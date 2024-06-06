@@ -1531,7 +1531,7 @@ MonoBehaviour:
   moveSpeedMultiplyer: 1
   damageMultiplyer: 0
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
 --- !u!114 &539636255443479817
 MonoBehaviour:
   m_ObjectHideFlags: 0

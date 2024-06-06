@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,19 +25,18 @@ public class HealthScript : MonoBehaviour
         zoneDps = gameManager.ZoneDps;
         HealthBar.value = 1;
         UpdateHealthBarText();
-        
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(gameManager == null) gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         CheckZoneDamage();
     }
 
     private void CheckZoneDamage()
     {
-        if (DamageCircle.IsOutsideCircle_Static(transform.position))
+        if (gameManager.state == GameState.Ingame && DamageCircle.IsOutsideCircle_Static(transform.position))
         {
             if(!zoneDmg)
             {
@@ -69,6 +69,8 @@ public class HealthScript : MonoBehaviour
 
     public void Damage(int damage)
     {
+        if (gameManager.state != GameState.Ingame) return;
+        
         Statscript.currentHealth -= damage;
 
         HealthBar.value = ScaleHealthToHealthBar();

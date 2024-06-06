@@ -11,11 +11,11 @@ public class Statscript : MonoBehaviour
     public float damageMultiplyer;
 
     public float maxHealth = 100;
-    public float currentHealth;
+    public float currentHealth = 100;
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        
     }
 
     // Update is called once per frame

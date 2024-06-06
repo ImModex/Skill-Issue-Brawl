@@ -105,6 +105,8 @@ namespace StarterAssets
 
 		private void Update()
 		{
+			if (_mainCamera == null) _mainCamera = Camera.main.gameObject;
+			
 			GroundedCheck();
 			Move();
 			ClearButtonSelection();
