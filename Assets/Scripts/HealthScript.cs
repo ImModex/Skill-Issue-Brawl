@@ -60,6 +60,10 @@ public class HealthScript : MonoBehaviour
             {
                 zoneDmg = false;
                 damagePerTick -= zoneDps;
+                if(damagePerTick < 0)
+                {
+                    damagePerTick = 0; //Problem with OntriggerExit
+                }
             }
             
         }
