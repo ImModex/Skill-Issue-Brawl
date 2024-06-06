@@ -10,7 +10,16 @@ public class AudioManager : MonoBehaviour
 
     [Header("--------- Audio Clip -------------")]
     public AudioClip background;
-    public AudioClip spellshot;
+    public AudioClip fireball;
+    public AudioClip steam;
+    public AudioClip movespeed;
+    public AudioClip firewall;
+    public AudioClip wave;
+    public AudioClip stunprojectile;
+    public AudioClip slowfield;
+    public AudioClip shield;
+    public AudioClip tripleshot;
+    public AudioClip wall;
 
     public void Start()
     {
@@ -18,7 +27,7 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    //Mit dieser Funktion können verschiedene Sound von anderen Scripts aufgerufen werden
+    //Mit dieser Funktion k?nnen verschiedene Sound von anderen Scripts aufgerufen werden
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
