@@ -1294,7 +1294,7 @@ Animator:
   m_GameObject: {fileID: 3893107665195392599}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: bed7a092d53e7c748bd65db98cebf9d6, type: 3}
-  m_Controller: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8a1aa08569592814aacfe544e417e0c6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1344,7 +1344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedButtons: 
-  MoveSpeed: 5
+  MoveSpeed: 8
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
   FootstepAudioClips:
@@ -2977,7 +2977,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724e19265a5f89e4186a2766f1af692a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
   target: {fileID: 4272921737620479596}
 --- !u!1 &8305086181051528682
 GameObject:
@@ -3335,7 +3334,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 95805638432926132, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
+    - {fileID: 136275810615880682, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
