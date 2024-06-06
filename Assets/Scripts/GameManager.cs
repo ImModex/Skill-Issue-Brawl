@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> initialSpawns;
     public List<GameObject> respawnPoints;
+    public DamageCircle DamageCircle;
+    public bool Circleshrink;
+    public float RoundDuration;
 
     public List<GameObject> players = new();
 
@@ -34,33 +37,40 @@ public class GameManager : MonoBehaviour
         {
             TeleportPlayer(players[i], initialSpawns[i].transform.position);
         }
+        StartCoroutine(CircleShrinkTimer());
+    
+    }
+
+    IEnumerator CircleShrinkTimer()
+    {
+        yield return new WaitForSeconds(RoundDuration);
+        Circleshrink = true;
+        DamageCircle.Circleshrink = true;
     }
     
     public void RespawnPlayer(GameObject player)
     {
-        // Remove respawn points that are in the damage zone
-        respawnPoints.RemoveAll(point => DamageCircle.IsOutsideCircle_Static(point.transform.position));
-        if (respawnPoints.Count <= 0)
+        if(!Circleshrink)
         {
-            player.SetActive(false);
-            return;
-        }
-     
-        // Regen to full hp
-        player.GetComponent<HealthScript>().Regenerate();
-        
-        // Teleport to random respawn location
-        TeleportPlayer(player, respawnPoints[Random.Range(0, respawnPoints.Count)].transform.position);
-        
-        playerStats.TryGetValue(player, out var stats);
+            // Regen to full hp
+            player.GetComponent<HealthScript>().Regenerate();
+            
+            // Teleport to random respawn location
+            TeleportPlayer(player, respawnPoints[Random.Range(0, respawnPoints.Count)].transform.position);
+            
+            playerStats.TryGetValue(player, out var stats);
 
-        // Falling calls this method multiple times - make sure only 1 death is added per second at max
-        if (stats.lastDeath + 1 < Time.fixedTime)
-        {
-            stats!.deaths++;
-            stats!.lastDeath = Time.fixedTime;
-            Debug.Log(stats.deaths);
+            // Falling calls this method multiple times - make sure only 1 death is added per second at max
+            if (stats.lastDeath + 1 < Time.fixedTime)
+            {
+                stats!.deaths++;
+                stats!.lastDeath = Time.fixedTime;
+                Debug.Log(stats.deaths);
+            }
+        }else{
+            player.SetActive(false);
         }
+        
     }
 
     private void TeleportPlayer(GameObject player, Vector3 position)
