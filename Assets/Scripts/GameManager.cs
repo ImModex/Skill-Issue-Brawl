@@ -99,6 +99,15 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(nameof(LoadYourAsyncScene));
                 return;
             }
+            
+            playerStats.TryGetValue(player, out var stats);
+            // Falling calls this method multiple times - make sure only 1 death is added per second at max
+            if (stats.lastDeath + 1 < Time.fixedTime)
+            {
+                stats!.deaths++;
+                stats!.lastDeath = Time.fixedTime;
+                Debug.Log(stats.deaths);
+            }
 
             player.SetActive(false);
             
@@ -151,9 +160,10 @@ public class GameManager : MonoBehaviour
 
     private GameObject GetBestPlayer()
     {
-        using var enumerator = playerStats.OrderBy(stats => stats.Value.kills).ThenBy(stats => stats.Value.lastDeath).GetEnumerator();
-        enumerator.MoveNext();
-        return enumerator.Current.Key;
+        var sorted = playerStats.OrderBy(stats => stats.Value.kills).ThenBy(stats => stats.Value.lastDeath);
+        var first = sorted.First();
+        
+        return first.Key;
     }
     
     private class PlayerStats

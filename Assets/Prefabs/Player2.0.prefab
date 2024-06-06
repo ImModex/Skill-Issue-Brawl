@@ -1270,7 +1270,6 @@ GameObject:
   - component: {fileID: 9017985027594786959}
   - component: {fileID: 3980588145507451361}
   - component: {fileID: 5043868552312935401}
-  - component: {fileID: 5952388932964873417}
   - component: {fileID: 3980242971952243703}
   - component: {fileID: 7637155111200239959}
   - component: {fileID: 7712348422552479819}
@@ -1344,7 +1343,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.8
-  m_Radius: 0.6
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.25
   m_SkinWidth: 0.02
@@ -1386,23 +1385,6 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1
---- !u!114 &5952388932964873417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3893107665195392599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909d917d73a63f940ac158d02e936645, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pushLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  canPush: 0
-  strength: 1.1
 --- !u!114 &3980242971952243703
 MonoBehaviour:
   m_ObjectHideFlags: 0
