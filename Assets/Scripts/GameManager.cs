@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Enums;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> players = new();
 
     private Dictionary<GameObject, PlayerStats> playerStats = new();
+
+    public GameState state;
     
     // Start is called before the first frame update
     void Start()
@@ -71,7 +74,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = position;
         charController.enabled = true;
     }
-
+    
     private class PlayerStats
     {
         public int deaths = 0;
