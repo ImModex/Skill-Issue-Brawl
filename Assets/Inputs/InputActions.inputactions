@@ -24,6 +24,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "df2df230-e7da-4d72-82c3-a19941aa4dd8",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Fire",
                     "type": "Button",
                     "id": "8de6ee5f-c07b-4843-9619-6d85fc86714f",
@@ -296,6 +305,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ClearButtonSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe5d859e-9ee8-4af9-8f6b-bf3cad0638f5",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
