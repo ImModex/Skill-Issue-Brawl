@@ -68,7 +68,7 @@ namespace StarterAssets
 		private float _targetRotation = 0.0f;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
-		private bool spellcooldownUp = false;
+		public bool spellcooldownUp = false;
 
 		// animation IDs
 		private int _animIDSpeed;
@@ -92,7 +92,14 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+			
 		}
+
+		private void OnEnable()
+		{
+			spellcooldownUp = false;
+		}
+		
 
 		private void Start()
 		{
