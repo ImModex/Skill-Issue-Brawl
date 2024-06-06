@@ -2430,6 +2430,7 @@ MonoBehaviour:
   selectElement2: 0
   selectElement3: 0
   selectElement4: 0
+  clearButtonSelection: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -2613,7 +2614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 95805638432926132, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 136275810615880682, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
       propertyPath: m_Enabled
