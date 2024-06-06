@@ -9,36 +9,27 @@ public class DamageCircle : MonoBehaviour
 {
     private static DamageCircle instance;
 
-    private Transform circleTransform;
-    private Transform topTransform;
-    private Transform bottomTransform;
-    private Transform leftTransform;
-    private Transform rightTransform;
+    public Transform circleTransform;
+    public Transform topTransform;
+    public Transform bottomTransform;
+    public Transform leftTransform;
+    public Transform rightTransform;
+    public ParticleSystem SmokeRing;
 
     public float circleShrinkSpeed;
 
     public bool Circleshrink = false;
 
     private Vector3 circleSize;
-    private Vector3 circlePosition;
 
-    private Vector3 targetCircleSize;
+    private Vector3 targetCircleSize = Vector3.zero;
+    private Vector3 sizeChangeVector = new Vector3(-0.8f,-0.8f,-0.8f);
 
     void Awake()
     {
         instance = this;
         
-        circleShrinkSpeed = 2.4f;
-       
-        circleTransform = transform.Find("dz center");
-        topTransform = transform.Find("dz top");
-        leftTransform = transform.Find("dz left");
-        rightTransform = transform.Find("dz right");
-        bottomTransform = transform.Find("dz bottom");
-
-        SetCircleSize(new Vector3(0,0), new Vector3(48, 48, 48));
-        targetCircleSize = new Vector3(0, 0);
-        
+        SetCircleSize(new Vector3(48, 48, 48));
     }
 
     private void Update()
@@ -47,26 +38,34 @@ public class DamageCircle : MonoBehaviour
         {
             return;
         }
-        Vector3 sizeChangeVector = (targetCircleSize - circleSize).normalized;
+
         Vector3 newCircleSize = circleSize + sizeChangeVector * Time.deltaTime * circleShrinkSpeed;
-        SetCircleSize(circlePosition, newCircleSize);
+        SetCircleSize(newCircleSize);
     }
 
-   private void SetCircleSize(Vector3 position, Vector3 size)
+   private void SetCircleSize(Vector3 size)
    {
-       circleTransform.localScale = size;
-       circlePosition= circleTransform.localPosition;
-       circleSize = size;
+        circleTransform.localScale = size;
+        circleSize = size;
 
-       topTransform.localPosition = new Vector3(0, 0,54-((48-size.y)/2));
-       leftTransform.localPosition = new Vector3(-54 + ((48 - size.y) / 2),0);
-       rightTransform.localPosition = new Vector3( 54 - ((48 - size.y) / 2),0);
-       bottomTransform.localPosition = new Vector3(0, 0, -54 + ((48 - size.y) / 2));
+        var sh = SmokeRing.shape;
+        sh.scale += sizeChangeVector * Time.deltaTime * circleShrinkSpeed;
+
+        if(sh.scale.x < 15)
+        {
+            var em = SmokeRing.emission;
+            em.enabled = false;
+        }
+
+        topTransform.localPosition = new Vector3(0, 0,54-((48-size.y)/2));
+        leftTransform.localPosition = new Vector3(-54 + ((48 - size.y) / 2),0);
+        rightTransform.localPosition = new Vector3( 54 - ((48 - size.y) / 2),0);
+        bottomTransform.localPosition = new Vector3(0, 0, -54 + ((48 - size.y) / 2));
     }
 
    private bool IsOutsideCircle(Vector3 position)
    {
-       return Vector3.Distance(position, circlePosition) > circleSize.x * .5f;
+       return Vector3.Distance(position, Vector3.zero) > circleSize.x * .5f;
    }
 
 
