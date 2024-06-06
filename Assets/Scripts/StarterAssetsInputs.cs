@@ -17,6 +17,7 @@ namespace StarterAssets
 		public bool selectElement2;
 		public bool selectElement3;
 		public bool selectElement4;
+		public bool clearButtonSelection;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -68,6 +69,11 @@ namespace StarterAssets
 		{
 			SelectElement4Input(value.isPressed);
 		}
+
+		public void OnClearButtonSelection(InputValue value)
+		{
+			ClearButtonSelectionInput(value.isPressed);
+		}
 #endif
 
 
@@ -114,6 +120,11 @@ namespace StarterAssets
 		public void SelectElement4Input(bool newSpellSelectState)
 		{
 			selectElement4 = newSpellSelectState;
+		}
+
+		public void ClearButtonSelectionInput(bool newClearButtonSelectionState)
+		{
+			clearButtonSelection = newClearButtonSelectionState;
 		}
 
 		private void OnApplicationFocus()

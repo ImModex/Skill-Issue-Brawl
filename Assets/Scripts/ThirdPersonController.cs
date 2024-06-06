@@ -105,6 +105,7 @@ namespace StarterAssets
 		{
 			GroundedCheck();
 			Move();
+			ClearButtonSelection();
 			HandleElementSelection();
 			Fire();
 		}
@@ -188,6 +189,16 @@ namespace StarterAssets
 				Debug.Log($"u selected {SelectedElements[Button.West]}. SUBLIME.");
 				_input.selectElement4 = false;
 				AddElementToSelection(Button.West);
+			}
+		}
+
+		private void ClearButtonSelection()
+		{
+			if (_input.clearButtonSelection)
+			{
+				SelectedButtons.Clear();
+				Debug.Log($"Button selection has been cleared: {SelectedButtons.Count == 0}");
+				_input.clearButtonSelection = false;
 			}
 		}
 
