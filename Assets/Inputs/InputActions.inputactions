@@ -310,6 +310,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e9e4f68c-517f-431a-80c4-33f80ee8065f",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClearButtonSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fe5d859e-9ee8-4af9-8f6b-bf3cad0638f5",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
