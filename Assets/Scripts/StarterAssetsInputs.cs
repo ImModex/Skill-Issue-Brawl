@@ -34,10 +34,7 @@ namespace StarterAssets
 
 		public void OnLook(InputValue value)
 		{
-			if (cursorInputForLook)
-			{
-				LookInput(value.Get<Vector2>());
-			}
+			LookInput(value.Get<Vector2>());
 		}
 
 		public void OnSprint(InputValue value)
