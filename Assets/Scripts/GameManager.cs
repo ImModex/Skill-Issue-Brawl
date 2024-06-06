@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Enums;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -86,8 +87,14 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(nameof(LoadYourAsyncScene));
                 return;
             }
-            
+
             player.SetActive(false);
+            
+            if (players.FindAll(p => p.activeSelf).Count <= 1) // Last player won
+            {
+                StartCoroutine(nameof(LoadYourAsyncScene));
+                return;
+            }
         }
     }
     
@@ -108,10 +115,13 @@ public class GameManager : MonoBehaviour
         foreach (var rootGameObject in SceneManager.GetSceneByBuildIndex(4).GetRootGameObjects())
         {
             if (rootGameObject.name != "WinController") continue;
+            
+            //var lastPlayer = players.Find(p => p.activeSelf);
+            //playerStats.TryGetValue(lastPlayer, out var lastPlayerStats);
 
-            var lastPlayer = players.Find(p => p.activeSelf);
-            playerStats.TryGetValue(lastPlayer, out var lastPlayerStats);
-            rootGameObject.GetComponent<WinController>().Display(lastPlayerStats!.kills.ToString(), lastPlayer.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Renderer>().material);
+            var bestPlayer = GetBestPlayer();
+            playerStats.TryGetValue(bestPlayer, out var bestPlayerStats);
+            rootGameObject.GetComponent<WinController>().Display(bestPlayerStats!.kills.ToString(), bestPlayer.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Renderer>().material);
         }
         
         // Unload the previous Scene
@@ -125,6 +135,13 @@ public class GameManager : MonoBehaviour
         charController.enabled = false;
         player.transform.position = position;
         charController.enabled = true;
+    }
+
+    private GameObject GetBestPlayer()
+    {
+        using var enumerator = playerStats.OrderBy(stats => stats.Value.kills).ThenBy(stats => stats.Value.lastDeath).GetEnumerator();
+        enumerator.MoveNext();
+        return enumerator.Current.Key;
     }
     
     private class PlayerStats
