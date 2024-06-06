@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedMultiplyer: 1.5
-  durationSec: 2
+  durationSec: 3
 --- !u!1001 &6691784735492865618
 PrefabInstance:
   m_ObjectHideFlags: 0

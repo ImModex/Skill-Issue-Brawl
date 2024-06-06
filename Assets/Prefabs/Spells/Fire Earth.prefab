@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2509b62c66803f46a8952adc8bdf90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationSec: 8
-  damagePerTick: 5
+  durationSec: 6
+  damagePerTick: 10
 --- !u!1001 &402532907070641057
 PrefabInstance:
   m_ObjectHideFlags: 0

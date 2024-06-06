@@ -4952,7 +4952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   range: 10
-  damage: 5
+  damage: 20
   destroyOnHit: 0
   explosion: 0
   Explosionobject: {fileID: 0}

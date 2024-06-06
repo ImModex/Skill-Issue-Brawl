@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -27,6 +28,8 @@ namespace StarterAssets
 		/// Buttons mapped to the elements, that were selected by the player at the start of the game.
 		/// </summary>
 		public Dictionary<Button, Element> SelectedElements = new();
+
+		public float SpellCooldown;
 
 
 		[Header("Player")]
@@ -65,6 +68,7 @@ namespace StarterAssets
 		private float _targetRotation = 0.0f;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
+		private bool spellcooldownUp = false;
 
 		// animation IDs
 		private int _animIDSpeed;
@@ -150,6 +154,13 @@ namespace StarterAssets
 		{
 			if (statschanges.Stunned)
 			{
+				_input.fire = false;
+				return;
+			}
+
+			if (spellcooldownUp)
+			{
+				_input.fire = false;
 				return;
 			}
 
@@ -163,6 +174,8 @@ namespace StarterAssets
 					return;
 				}
 
+				spellcooldownUp = true;
+				StartCoroutine(SpellCooldownTimer());
 				_animator.SetTrigger(_animIDFire);
 				spellManager.Cast(SelectedElements[SelectedButtons[0]], SelectedElements[SelectedButtons[1]], gameObject);
 				Debug.Log($"woohoo i did a shoot with {SelectedElements[SelectedButtons[0]]} and {SelectedElements[SelectedButtons[1]]}. (button selection cleared)");
@@ -328,6 +341,12 @@ namespace StarterAssets
 					AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
 				}
 			}
+		}
+
+		private IEnumerator SpellCooldownTimer()
+		{
+			yield return new WaitForSeconds(SpellCooldown);
+			spellcooldownUp = false;
 		}
 	}
 }

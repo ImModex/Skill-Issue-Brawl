@@ -9846,7 +9846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230e1e94b2c8d2c4b86bb237aa52cf13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 20
 --- !u!33 &9017005251904838937
 MeshFilter:
   m_ObjectHideFlags: 0

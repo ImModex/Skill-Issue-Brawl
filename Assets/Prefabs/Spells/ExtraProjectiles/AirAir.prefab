@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   range: 25
-  damage: 15
+  damage: 20
   destroyOnHit: 1
   explosion: 0
   Explosionobject: {fileID: 0}
