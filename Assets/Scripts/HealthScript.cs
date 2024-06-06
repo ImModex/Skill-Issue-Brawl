@@ -88,10 +88,7 @@ public class HealthScript : MonoBehaviour
 		{
 			Debug.Log("You died lmao");
 			gameManager.RespawnPlayer(gameObject);
-			if (caster is not null)
-			{
-				++caster.killCount;
-			}
+			caster?.AddKill();
 		}
 
 		Debug.Log(damage + "was Taken");

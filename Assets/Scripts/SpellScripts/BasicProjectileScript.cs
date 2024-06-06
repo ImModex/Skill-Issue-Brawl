@@ -27,10 +27,8 @@ public class BasicProjectileScript : MonoBehaviour
 		{
 			if (other.CompareTag("Player"))
 			{
-
 				HealthScript HP = other.gameObject.GetComponent<HealthScript>();
 				HP.Damage(damage, caster.GetComponent<Statscript>());
-
 			}
 
 			if (destroyOnHit)

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Statscript : MonoBehaviour
@@ -12,4 +13,14 @@ public class Statscript : MonoBehaviour
 
 	public int killCount = 0;
 
+	public event Action<int> OnKillCountChanged;
+
+	public void AddKill()
+	{
+		killCount++;
+		Debug.Log($"Kills: {killCount}");
+
+		// Trigger the event
+		OnKillCountChanged?.Invoke(killCount);
+	}
 }
