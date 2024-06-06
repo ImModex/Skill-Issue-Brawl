@@ -42,8 +42,11 @@ public class GameManager : MonoBehaviour
         {
             TeleportPlayer(players[i], initialSpawns[i].transform.position);
         }
-        StartCoroutine(CircleShrinkTimer());
-    
+
+        if (DamageCircle != null)
+        {
+            StartCoroutine(CircleShrinkTimer());
+        }
     }
 
     IEnumerator CircleShrinkTimer()

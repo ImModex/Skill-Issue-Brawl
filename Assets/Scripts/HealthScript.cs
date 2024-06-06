@@ -30,13 +30,21 @@ public class HealthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameManager == null) gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        CheckZoneDamage();
+        if (gameManager == null)
+        {
+            gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+            zoneDps = gameManager.ZoneDps;
+        }
+
+        if (gameManager.state == GameState.Ingame)
+        {
+            CheckZoneDamage();
+        }
     }
 
     private void CheckZoneDamage()
     {
-        if (gameManager.state == GameState.Ingame && DamageCircle.IsOutsideCircle_Static(transform.position))
+        if (DamageCircle.IsOutsideCircle_Static(transform.position))
         {
             if(!zoneDmg)
             {

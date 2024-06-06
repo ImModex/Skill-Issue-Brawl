@@ -292,7 +292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0dd88df19cedaa4094afebba96aed22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleShrinkSpeed: 0
+  circleShrinkSpeed: 2
+  Circleshrink: 0
 --- !u!4 &78861079
 Transform:
   m_ObjectHideFlags: 0
@@ -1003,6 +1004,18 @@ PrefabInstance:
     - target: {fileID: 3994188574297807593, guid: 5acd19e1544dbcc48a935f3285857c25, type: 3}
       propertyPath: state
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994188574297807593, guid: 5acd19e1544dbcc48a935f3285857c25, type: 3}
+      propertyPath: ZoneDps
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994188574297807593, guid: 5acd19e1544dbcc48a935f3285857c25, type: 3}
+      propertyPath: DamageCircle
+      value: 
+      objectReference: {fileID: 78861078}
+    - target: {fileID: 3994188574297807593, guid: 5acd19e1544dbcc48a935f3285857c25, type: 3}
+      propertyPath: RoundDuration
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3994188574297807593, guid: 5acd19e1544dbcc48a935f3285857c25, type: 3}
       propertyPath: players.Array.size
