@@ -42,7 +42,11 @@ public class PlayerManager : MonoBehaviour
         DontDestroyOnLoad(newPlayer.gameObject);
         
         countdownText.gameObject.SetActive(true);
-        InvokeRepeating(nameof(Countdown), 0, 1);
+
+        if (countdown == 15)
+        {
+            InvokeRepeating(nameof(Countdown), 0, 1);
+        }
     }
 
     private int countdown = 15;
