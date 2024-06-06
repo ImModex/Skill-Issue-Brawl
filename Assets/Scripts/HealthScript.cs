@@ -9,32 +9,51 @@ public class HealthScript : MonoBehaviour
     public Statscript Statscript;
     public Slider HealthBar;
     public TextMeshProUGUI HealthBarText;
-    private int damagePerTick;
+    
+    [Range(0, 100)]
+    public int damagePerTick;
 
+    public bool zoneDmg;
+    public int zoneDps;
     private GameManager gameManager;
     
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        
+        zoneDps = gameManager.ZoneDps;
         HealthBar.value = 1;
         UpdateHealthBarText();
         
-        InvokeRepeating(nameof(CheckZoneDamage), 0, 1);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        CheckZoneDamage();
     }
 
     private void CheckZoneDamage()
     {
         if (DamageCircle.IsOutsideCircle_Static(transform.position))
         {
-            Damage(5);
+            if(!zoneDmg)
+            {
+                zoneDmg = true;
+                damagePerTick +=  zoneDps;
+                StartCoroutine(damageOverTime());
+            }
+ 
+        }
+        else
+        {
+            if(zoneDmg)
+            {
+                zoneDmg = false;
+                damagePerTick -= zoneDps;
+            }
+            
         }
     }
     
@@ -64,13 +83,25 @@ public class HealthScript : MonoBehaviour
         Debug.Log(damage + "was Taken");
     }
 
+    public void ResetDOT()
+    {
+        damagePerTick = 0;
+    }
+
     public void DamageOverTime(int damageot)
     {
-        damagePerTick = damageot;
+        
         if(damagePerTick != 0)
         {
+            damagePerTick += damageot;
+            
+        }
+        else if (damageot != 0)
+        {
+            damagePerTick += damageot;
             StartCoroutine(damageOverTime());
         }
+
     }
 
     public void Stun(float stundur)

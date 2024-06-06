@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public bool Circleshrink;
     public float RoundDuration;
 
+    public int ZoneDps;
+
     public List<GameObject> players = new();
 
     private Dictionary<GameObject, PlayerStats> playerStats = new();
@@ -53,10 +55,14 @@ public class GameManager : MonoBehaviour
         if(!Circleshrink)
         {
             // Regen to full hp
-            player.GetComponent<HealthScript>().Regenerate();
+            HealthScript HP = player.GetComponent<HealthScript>();
+            HP.Regenerate();
+            
             
             // Teleport to random respawn location
             TeleportPlayer(player, respawnPoints[Random.Range(0, respawnPoints.Count)].transform.position);
+
+            HP.ResetDOT();
             
             playerStats.TryGetValue(player, out var stats);
 

@@ -29,7 +29,7 @@ public class DamageZone : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             HealthScript HP = other.gameObject.GetComponent<HealthScript>();
-            HP.DamageOverTime(0);
+            HP.DamageOverTime(-damagePerTick);
         }
     }
 
