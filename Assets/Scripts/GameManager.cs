@@ -7,19 +7,14 @@ public class GameManager : MonoBehaviour
     public List<GameObject> initialSpawns;
     public List<GameObject> respawnPoints;
 
-    public List<GameObject> players;
+    public List<GameObject> players = new();
 
     private Dictionary<GameObject, PlayerStats> playerStats = new();
     
     // Start is called before the first frame update
     void Start()
     {
-        players.ForEach(player => playerStats.Add(player, new PlayerStats()));
-
-        for (var i = 0; i < players.Count; i++)
-        {
-            players[i].transform.Translate(initialSpawns[i].transform.position);
-        }
+        StartGame(2);
     }
 
     // Update is called once per frame
@@ -28,17 +23,26 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void StartGame(int playerCount)
+    {
+        // TODO: Spawn players
+        
+        players.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+//        players.ForEach(player => playerStats.Add(player, new PlayerStats()));
+
+        for (var i = 0; i < players.Count; i++)
+        {
+            TeleportPlayer(players[i], initialSpawns[i].transform.position);
+        }
+    }
+    
     public void RespawnPlayer(GameObject player)
     {
         // Regen to full hp
         player.GetComponent<HealthScript>().Regenerate();
         
         // Teleport to random respawn location
-        // Esotherik, frag mich nicht wieso das sein muss.....
-        var charController = player.GetComponent<CharacterController>();
-        charController.enabled = false;
-        player.transform.position = respawnPoints[Random.Range(0, respawnPoints.Count)].transform.position;
-        charController.enabled = true;
+        TeleportPlayer(player, respawnPoints[Random.Range(0, respawnPoints.Count)].transform.position);
         
         playerStats.TryGetValue(player, out var stats);
 
@@ -49,6 +53,15 @@ public class GameManager : MonoBehaviour
             stats!.lastDeath = Time.fixedTime;
             Debug.Log(stats.deaths);
         }
+    }
+
+    private void TeleportPlayer(GameObject player, Vector3 position)
+    {
+        // Esotherik, frag mich nicht wieso das sein muss.....
+        var charController = player.GetComponent<CharacterController>();
+        charController.enabled = false;
+        player.transform.position = position;
+        charController.enabled = true;
     }
 
     private class PlayerStats

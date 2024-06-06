@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class HealthbarViewController : MonoBehaviour
 {
-    public Camera camera;
     public Transform target;
-    //public Vector3 offset;
+    private Camera cam;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = camera.transform.rotation;
-        //transform.position = target.position + offset;
+        transform.rotation = cam.transform.rotation;
     }
 }
