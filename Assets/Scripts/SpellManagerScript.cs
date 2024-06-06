@@ -10,7 +10,7 @@ public class SpellManagerScript : MonoBehaviour
 	{
 		ConfigureSpellMappings();
 	}
-	private AudioManager audioManager;
+	public AudioManager audioManager;
 	private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -18,7 +18,10 @@ public class SpellManagerScript : MonoBehaviour
 
 	private void Update()
 	{
-		// Method intentionally left empty.
+		if (audioManager == null)
+		{
+			audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+		}
 	}
 
 	public GameObject[] Spells;
@@ -71,45 +74,6 @@ public class SpellManagerScript : MonoBehaviour
 
 	private void playSound(int index)
 	{
-		if (index == 0)
-		{
-			audioManager.PlaySFX(audioManager.fireball);
-		}
-		else if (index == 1)
-		{
-			audioManager.PlaySFX(audioManager.steam);
-		}
-		else if (index == 2)
-		{
-			audioManager.PlaySFX(audioManager.movespeed);
-		}
-		else if (index == 3)
-		{
-			audioManager.PlaySFX(audioManager.firewall);
-		}
-		else if (index == 4)
-		{
-			audioManager.PlaySFX(audioManager.wave);
-		}
-		else if (index == 5)
-		{
-			audioManager.PlaySFX(audioManager.stunprojectile);
-		}
-		else if (index == 6)
-		{
-			audioManager.PlaySFX(audioManager.slowfield);
-		}
-		else if (index == 7)
-		{
-			audioManager.PlaySFX(audioManager.shield);
-		}
-		else if (index == 8)
-		{
-			audioManager.PlaySFX(audioManager.tripleshot);
-		}
-		else if (index == 9)
-		{
-			audioManager.PlaySFX(audioManager.wall);
-		}
+		audioManager.PlaySFX(index);
 	}
 }

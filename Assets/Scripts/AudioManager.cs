@@ -25,11 +25,71 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.clip = background;
         musicSource.Play();
+        
+    }
+
+    public void Update()
+    {
+        Debug.Log(this.SFXSource);
+        if(this.SFXSource == null)
+        {
+            this.SFXSource = gameObject.transform.GetChild(1).GetComponent<AudioSource>();
+        }
+        
     }
 
     //Mit dieser Funktion k?nnen verschiedene Sound von anderen Scripts aufgerufen werden
-    public void PlaySFX(AudioClip clip)
+    public void PlaySFX(int index)
     {
-        SFXSource.PlayOneShot(clip);
+        Debug.Log("Test Abort");
+        Debug.Log(this.SFXSource);
+        if (index == 0)
+		{
+            if (fireball == null)
+            {
+            Debug.LogError("Attempted to play a null AudioClip.");
+            return;
+            }
+            Debug.Log("FireballSound");
+            Debug.Log(fireball);
+			this.SFXSource.PlayOneShot(fireball);
+		}
+		else if (index == 1)
+		{
+			this.SFXSource.PlayOneShot(steam);
+		}
+		else if (index == 2)
+		{
+			this.SFXSource.PlayOneShot(movespeed);
+		}
+		else if (index == 3)
+		{
+			this.SFXSource.PlayOneShot(firewall);
+		}
+		else if (index == 4)
+		{
+			this.SFXSource.PlayOneShot(wave);
+		}
+		else if (index == 5)
+		{
+			this.SFXSource.PlayOneShot(stunprojectile);
+		}
+		else if (index == 6)
+		{
+			this.SFXSource.PlayOneShot(slowfield);
+		}
+		else if (index == 7)
+		{
+			this.SFXSource.PlayOneShot(shield);
+		}
+		else if (index == 8)
+		{
+			this.SFXSource.PlayOneShot(tripleshot);
+		}
+		else if (index == 9)
+		{
+			this.SFXSource.PlayOneShot(wall);
+		}
+        //SFXSource.PlayOneShot(clip);
     }
 }

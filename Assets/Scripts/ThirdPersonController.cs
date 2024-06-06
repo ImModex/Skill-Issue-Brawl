@@ -110,7 +110,7 @@ namespace StarterAssets
 		private void Update()
 		{
 			if (_mainCamera == null) _mainCamera = Camera.main.gameObject;
-			
+			if(spellManager == null) spellManager = GameObject.Find("SpellManager").GetComponent<SpellManagerScript>();
 			GroundedCheck();
 			Move();
 			ClearButtonSelection();
