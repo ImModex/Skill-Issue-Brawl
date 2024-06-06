@@ -80,7 +80,7 @@ public class HealthScript : MonoBehaviour
 		HealthBarText.text = $"{Statscript.currentHealth} / {Statscript.maxHealth}";
 	}
 
-	public void Damage(int damage, Statscript? caster)
+	public void Damage(int damage, Statscript caster)
 	{
 		if (gameManager.state != GameState.Ingame)
 		{
