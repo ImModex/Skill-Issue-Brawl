@@ -11,9 +11,7 @@ using Assets.Scripts.Enums;
 namespace StarterAssets
 {
 	[RequireComponent(typeof(CharacterController))]
-#if ENABLE_INPUT_SYSTEM
 	[RequireComponent(typeof(PlayerInput))]
-#endif
 	public class ThirdPersonController : MonoBehaviour
 	{
 		private SpellManagerScript spellManager;
@@ -32,10 +30,7 @@ namespace StarterAssets
 
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
-		public float MoveSpeed = 2.0f;
-
-		[Tooltip("Sprint speed of the character in m/s")]
-		public float SprintSpeed = 5.335f;
+		public float MoveSpeed = 8.0f;
 
 		[Tooltip("How fast the character turns to face movement direction")]
 		[Range(0.0f, 0.3f)]
@@ -44,7 +39,6 @@ namespace StarterAssets
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
 
-		public AudioClip LandingAudioClip;
 		public AudioClip[] FootstepAudioClips;
 		[Range(0, 1)] public float FootstepAudioVolume = 0.5f;
 
@@ -77,28 +71,18 @@ namespace StarterAssets
 		private int _animIDMotionSpeed;
 		private int _animIDFire;
 
-#if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
-#endif
 		private Animator _animator;
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 
-		private const float _threshold = 0.01f;
-
 		private bool _hasAnimator;
 
-		private bool IsCurrentDeviceMouse =>
-#if ENABLE_INPUT_SYSTEM
-				_playerInput.currentControlScheme == "KeyboardMouse";
-#else
-				return false;
-#endif
+		private bool IsCurrentDeviceMouse => _playerInput.currentControlScheme == "KeyboardMouse";
 
 		private void Awake()
 		{
-			// get a reference to our main camera
 			if (_mainCamera == null)
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -111,11 +95,7 @@ namespace StarterAssets
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
-#if ENABLE_INPUT_SYSTEM
 			_playerInput = GetComponent<PlayerInput>();
-#else
-			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
-#endif
 
 			AssignAnimationIDs();
 			AssignElementMapping();
@@ -123,8 +103,6 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			_hasAnimator = TryGetComponent(out _animator);
-
 			GroundedCheck();
 			Move();
 			HandleElementSelection();
@@ -225,9 +203,7 @@ namespace StarterAssets
 
 		private void Move()
 		{
-			// set target speed based on move speed, sprint speed and if sprint is pressed
-			// TODO: decide if sprint should be default
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed = MoveSpeed;
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -335,14 +311,6 @@ namespace StarterAssets
 					int index = Random.Range(0, FootstepAudioClips.Length);
 					AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
 				}
-			}
-		}
-
-		private void OnLand(AnimationEvent animationEvent)
-		{
-			if (animationEvent.animatorClipInfo.weight > 0.5f)
-			{
-				AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
 			}
 		}
 	}
