@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         // TODO: Spawn players
         
         players.AddRange(GameObject.FindGameObjectsWithTag("Player"));
-//        players.ForEach(player => playerStats.Add(player, new PlayerStats()));
+        players.ForEach(player => playerStats.Add(player, new PlayerStats()));
 
         for (var i = 0; i < players.Count; i++)
         {
@@ -38,6 +38,14 @@ public class GameManager : MonoBehaviour
     
     public void RespawnPlayer(GameObject player)
     {
+        // Remove respawn points that are in the damage zone
+        respawnPoints.RemoveAll(point => DamageCircle.IsOutsideCircle_Static(point.transform.position));
+        if (respawnPoints.Count <= 0)
+        {
+            player.SetActive(false);
+            return;
+        }
+     
         // Regen to full hp
         player.GetComponent<HealthScript>().Regenerate();
         
