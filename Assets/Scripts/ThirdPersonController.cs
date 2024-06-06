@@ -146,10 +146,11 @@ namespace StarterAssets
 
 		private void Fire()
 		{
-		if(statschanges.Stunned)
+			if (statschanges.Stunned)
 			{
 				return;
 			}
+
 			if (_input.fire)
 			{
 				_input.fire = false;
@@ -221,18 +222,13 @@ namespace StarterAssets
 
 		private void Move()
 		{
-			
-
-			if(statschanges.Stunned)
+			if (statschanges.Stunned)
 			{
 				//Animator set to dizzy or smth
 				return;
 			}
 
 			float targetSpeed = MoveSpeed;
-			
-			// set target speed based on move speed, sprint speed and if sprint is pressed
-			// TODO: decide if sprint should be default
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -280,7 +276,7 @@ namespace StarterAssets
 
 			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is a move input rotate player when the player is moving
-			if(_input.look != Vector2.zero)
+			if (_input.look != Vector2.zero)
 			{
 				float lookRotation = (Mathf.Atan2(lookDirection.x, lookDirection.z) * Mathf.Rad2Deg) +
 								  _mainCamera.transform.eulerAngles.y;
@@ -291,7 +287,8 @@ namespace StarterAssets
 					RotationSmoothTime);
 
 				transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-			}else if (_input.move != Vector2.zero)
+			}
+			else if (_input.move != Vector2.zero)
 			{
 				_targetRotation = (Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg) +
 								  _mainCamera.transform.eulerAngles.y;
@@ -305,9 +302,9 @@ namespace StarterAssets
 
 			Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
-			
+
 			// move the player
-			
+
 			_ = _controller.Move((targetDirection.normalized * (_speed * Time.deltaTime/* * statschanges.moveSpeedMultiplyer*/)) +
 							 (new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime));
 
@@ -316,7 +313,7 @@ namespace StarterAssets
 			{
 				_animator.SetFloat(_animIDSpeed, _animationBlend);
 				_animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-			}//*/
+			}
 		}
 
 		private void OnFootstep(AnimationEvent animationEvent)
