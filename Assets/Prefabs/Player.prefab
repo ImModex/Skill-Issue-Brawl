@@ -2196,7 +2196,7 @@ Animator:
   m_GameObject: {fileID: 8602077161992072552}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: bed7a092d53e7c748bd65db98cebf9d6, type: 3}
-  m_Controller: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8a1aa08569592814aacfe544e417e0c6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2245,6 +2245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SelectedButtons: 
   MoveSpeed: 5
   SprintSpeed: 8
   RotationSmoothTime: 0.12
@@ -2308,10 +2309,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
-  jump: 0
   sprint: 0
   fire: 0
   selectSpell: 0
+  selectElement1: 0
+  selectElement2: 0
+  selectElement3: 0
+  selectElement4: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1

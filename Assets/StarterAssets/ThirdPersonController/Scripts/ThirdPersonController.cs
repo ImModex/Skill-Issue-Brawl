@@ -235,16 +235,13 @@ namespace StarterAssets
 			{
 				_input.fire = false;
 
-				//spellManager.Cast(_spellSelection, gameObject);
-
 				if (SelectedButtons.Count < 2)
 				{
-					spellManager.Cast(null, null, gameObject);
-					SelectedButtons.Clear();
-					Debug.Log("Less than 2 elements had been selected -> default projectile. (button selection cleared)");
+					Debug.Log("<2 elements selected -> no shot");
 					return;
 				}
 
+				_animator.SetTrigger(_animIDFire);
 				spellManager.Cast(SelectedElements[SelectedButtons[0]], SelectedElements[SelectedButtons[1]], gameObject);
 				Debug.Log($"woohoo i did a shoot with {SelectedElements[SelectedButtons[0]]} and {SelectedElements[SelectedButtons[1]]}. (button selection cleared)");
 				SelectedButtons.Clear();
@@ -291,7 +288,6 @@ namespace StarterAssets
 			}
 			SelectedButtons.Add(selectedElement);
 		}
-
 
 		private void Move()
 		{
