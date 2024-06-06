@@ -1,46 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts.Enums;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
 {
-    public Statscript Statscript;
-    public Slider HealthBar;
-    public TextMeshProUGUI HealthBarText;
-    
-    [Range(0, 100)]
-    public int damagePerTick;
+	public Statscript Statscript;
+	public Slider HealthBar;
+	public TextMeshProUGUI HealthBarText;
 
-    public bool zoneDmg;
-    public int zoneDps;
-    private GameManager gameManager;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        zoneDps = gameManager.ZoneDps;
-        HealthBar.value = 1;
-        UpdateHealthBarText();
-    }
+	[Range(0, 100)]
+	public int damagePerTick;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (gameManager == null)
-        {
-            gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-            zoneDps = gameManager.ZoneDps;
-        }
+	public bool zoneDmg;
+	public int zoneDps;
+	private GameManager gameManager;
 
-        if (gameManager.state == GameState.Ingame)
-        {
-            CheckZoneDamage();
-        }
-    }
+	// Start is called before the first frame update
+	private void Start()
+	{
+		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+		zoneDps = gameManager.ZoneDps;
+		HealthBar.value = 1;
+		UpdateHealthBarText();
+	}
 
     private void CheckZoneDamage()
     {
@@ -69,106 +53,123 @@ public class HealthScript : MonoBehaviour
         }
     }
     
-    private float ScaleHealthToHealthBar()
-    {
-        return Statscript.currentHealth / Statscript.maxHealth;
-    }
+	// Update is called once per frame
+	private void Update()
+	{
+		if (gameManager == null)
+		{
+			gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+			zoneDps = gameManager.ZoneDps;
+		}
 
-    private void UpdateHealthBarText()
-    {
-        HealthBarText.text = $"{Statscript.currentHealth} / {Statscript.maxHealth}";
-    }
+		if (gameManager.state == GameState.Ingame)
+		{
+			CheckZoneDamage();
+		}
+	}
 
-    public void Damage(int damage)
-    {
-        if (gameManager.state != GameState.Ingame) return;
-        
-        Statscript.currentHealth -= damage;
+	
 
-        HealthBar.value = ScaleHealthToHealthBar();
-        UpdateHealthBarText();
-    
-        if (HealthBar.value <= 0)
-        {
-            Debug.Log("You died lmao");
-            gameManager.RespawnPlayer(gameObject);
-        }   
-        
-        Debug.Log(damage + "was Taken");
-    }
+	private float ScaleHealthToHealthBar()
+	{
+		return Statscript.currentHealth / Statscript.maxHealth;
+	}
 
-    public void ResetDOT()
-    {
-        damagePerTick = 0;
-    }
+	private void UpdateHealthBarText()
+	{
+		HealthBarText.text = $"{Statscript.currentHealth} / {Statscript.maxHealth}";
+	}
 
-    public void DamageOverTime(int damageot)
-    {
-        
-        if(damagePerTick != 0)
-        {
-            damagePerTick += damageot;
-            
-        }
-        else if (damageot != 0)
-        {
-            damagePerTick += damageot;
-            StartCoroutine(damageOverTime());
-        }
+	public void Damage(int damage, Statscript? caster)
+	{
+		if (gameManager.state != GameState.Ingame)
+		{
+			return;
+		}
 
-    }
+		Statscript.currentHealth -= damage;
 
-    public void Stun(float stundur)
-    {
-        StartCoroutine(stun(stundur));
-    }
+		HealthBar.value = ScaleHealthToHealthBar();
+		UpdateHealthBarText();
 
-    public void Velocity(float dur, float mult)
-    {
-        StartCoroutine(velocity(dur, mult));
-    }
+		if (HealthBar.value <= 0)
+		{
+			Debug.Log("You died lmao");
+			gameManager.RespawnPlayer(gameObject);
+			caster?.AddKill();
+		}
 
-    public void Velocity(float mult)
-    {
-        Statscript.moveSpeedMultiplyer *= mult;
-    }
+		Debug.Log(damage + "was Taken");
+	}
 
-    public void Regenerate()
-    {
-        Statscript.currentHealth = Statscript.maxHealth;
+	public void ResetDOT()
+	{
+		damagePerTick = 0;
+	}
 
-        HealthBar.value = ScaleHealthToHealthBar();
-        UpdateHealthBarText();
-        
-        Debug.Log("Healed to full");
-    }
+	public void DamageOverTime(int damageot)
+	{
 
-    IEnumerator stun(float stundur)
-    {
-        Statscript.Stunned = true;
-        yield return new WaitForSeconds(stundur);
-        Statscript.Stunned = false;
-        Debug.Log("Stunned false");
-    }
+		if (damagePerTick != 0)
+		{
+			damagePerTick += damageot;
 
-    IEnumerator velocity(float dur, float mult)
-    {
-        Debug.Log("Ms to slow");
-        Statscript.moveSpeedMultiplyer *= mult;
-        yield return new WaitForSeconds(dur);
-        Statscript.moveSpeedMultiplyer /= mult;
-        Debug.Log("Ms to normal");
-    }
+		}
+		else if (damageot != 0)
+		{
+			damagePerTick += damageot;
+			_ = StartCoroutine(damageOverTime());
+		}
+	}
 
-    IEnumerator damageOverTime()
-    {
-        while(damagePerTick != 0)
-        {
-            Damage(damagePerTick);
-            yield return new WaitForSeconds(0.5f);
-        }
-        
-    }
-    
+	public void Stun(float stundur)
+	{
+		_ = StartCoroutine(stun(stundur));
+	}
 
+	public void Velocity(float dur, float mult)
+	{
+		_ = StartCoroutine(velocity(dur, mult));
+	}
+
+	public void Velocity(float mult)
+	{
+		Statscript.moveSpeedMultiplyer *= mult;
+	}
+
+	public void Regenerate()
+	{
+		Statscript.currentHealth = Statscript.maxHealth;
+
+		HealthBar.value = ScaleHealthToHealthBar();
+		UpdateHealthBarText();
+
+		Debug.Log("Healed to full");
+	}
+
+	private IEnumerator stun(float stundur)
+	{
+		Statscript.Stunned = true;
+		yield return new WaitForSeconds(stundur);
+		Statscript.Stunned = false;
+		Debug.Log("Stunned false");
+	}
+
+	private IEnumerator velocity(float dur, float mult)
+	{
+		Debug.Log("Ms to slow");
+		Statscript.moveSpeedMultiplyer *= mult;
+		yield return new WaitForSeconds(dur);
+		Statscript.moveSpeedMultiplyer /= mult;
+		Debug.Log("Ms to normal");
+	}
+
+	private IEnumerator damageOverTime()
+	{
+		while (damagePerTick != 0)
+		{
+			Damage(damagePerTick, null);
+			yield return new WaitForSeconds(0.5f);
+		}
+	}
 }
