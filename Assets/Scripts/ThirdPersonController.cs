@@ -15,6 +15,7 @@ namespace StarterAssets
 	public class ThirdPersonController : MonoBehaviour
 	{
 		private SpellManagerScript spellManager;
+		private Statscript statschanges;
 
 		/// <summary>
 		/// Buttons that were pressed in game.
@@ -92,6 +93,7 @@ namespace StarterAssets
 		private void Start()
 		{
 			spellManager = GameObject.Find("SpellManager").GetComponent<SpellManagerScript>();
+			statschanges = GetComponent<Statscript>();
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
@@ -144,6 +146,10 @@ namespace StarterAssets
 
 		private void Fire()
 		{
+		if(statschanges.Stunned)
+			{
+				return;
+			}
 			if (_input.fire)
 			{
 				_input.fire = false;
@@ -212,9 +218,21 @@ namespace StarterAssets
 			SelectedButtons.Add(selectedElement);
 		}
 
+
 		private void Move()
 		{
+			
+
+			if(statschanges.Stunned)
+			{
+				//Animator set to dizzy or smth
+				return;
+			}
+
 			float targetSpeed = MoveSpeed;
+			
+			// set target speed based on move speed, sprint speed and if sprint is pressed
+			// TODO: decide if sprint should be default
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -225,6 +243,7 @@ namespace StarterAssets
 				targetSpeed = 0.0f;
 			}
 
+			targetSpeed *= statschanges.moveSpeedMultiplyer;
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
@@ -247,6 +266,7 @@ namespace StarterAssets
 			{
 				_speed = targetSpeed;
 			}
+
 
 			_animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
 			if (_animationBlend < 0.01f)
@@ -273,8 +293,10 @@ namespace StarterAssets
 
 			Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
+			
 			// move the player
-			_ = _controller.Move((targetDirection.normalized * (_speed * Time.deltaTime)) +
+			
+			_ = _controller.Move((targetDirection.normalized * (_speed * Time.deltaTime/* * statschanges.moveSpeedMultiplyer*/)) +
 							 (new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime));
 
 			// update animator if using character
@@ -282,7 +304,7 @@ namespace StarterAssets
 			{
 				_animator.SetFloat(_animIDSpeed, _animationBlend);
 				_animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-			}
+			}//*/
 		}
 
 		private void OnFootstep(AnimationEvent animationEvent)

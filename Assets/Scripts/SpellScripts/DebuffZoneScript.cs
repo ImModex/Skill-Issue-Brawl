@@ -5,7 +5,6 @@ using UnityEngine;
 public class DebuffZoneScript : MonoBehaviour
 {
     public float moveSpeedMultiplyerChange;
-    public float damageMultiplyerChange;
     public float range;
     public float durationSec;
 
@@ -22,39 +21,25 @@ public class DebuffZoneScript : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             HealthScript HP = other.gameObject.GetComponent<HealthScript>();
-            Statscript Stats = other.gameObject.GetComponent<Statscript>();
-            AffectStats(Stats);
+            HP.Velocity(moveSpeedMultiplyerChange);
         }
     }
 
 
-    //OnTriggerExit is not called Retarded fix but it is a common problem
+    //OnTriggerExit is not called stupid fix but it is a common problem
     void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("Player"))
         {
             HealthScript HP = other.gameObject.GetComponent<HealthScript>();
-            Statscript Stats = other.gameObject.GetComponent<Statscript>();
-            DeAffectStats(Stats);
+            HP.Velocity(1/moveSpeedMultiplyerChange);
         }
-    }
-
-    void AffectStats(Statscript Stats)
-    {
-        Stats.moveSpeedMultiplyer -= moveSpeedMultiplyerChange;
-        Stats.damageMultiplyer -= damageMultiplyerChange;
-    }
-
-    void DeAffectStats(Statscript Stats)
-    {
-        Stats.moveSpeedMultiplyer += moveSpeedMultiplyerChange;
-        Stats.damageMultiplyer += damageMultiplyerChange;
     }
 
     IEnumerator Debufftimer()
     {
         yield return new WaitForSeconds(durationSec);
-        //OnTriggerExit is not called Retarded fix but it is a common problem
+        //OnTriggerExit is not called stupid fix but it is a common problem
         transform.Translate(new Vector3(0, -10, 0));
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);

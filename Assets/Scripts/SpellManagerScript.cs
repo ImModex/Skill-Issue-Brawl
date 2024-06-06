@@ -10,6 +10,11 @@ public class SpellManagerScript : MonoBehaviour
 	{
 		ConfigureSpellMappings();
 	}
+    private AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
 	private void Update()
 	{

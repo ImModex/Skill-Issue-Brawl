@@ -2331,6 +2331,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0bd36743724c24c90b09e537e4e1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Statscript: {fileID: 0}
+  HealthBar: {fileID: 0}
+  HealthBarText: {fileID: 0}
 --- !u!114 &6041489451055184786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2343,7 +2346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b61ead0106d9084eb98b5e7b5cc433d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedMultiplyer: 0
+  Stunned: 0
+  moveSpeedMultiplyer: 1
   damageMultiplyer: 0
 --- !u!95 &7616388993956858844
 Animator:
