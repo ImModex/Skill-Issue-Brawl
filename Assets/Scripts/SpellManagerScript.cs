@@ -10,11 +10,11 @@ public class SpellManagerScript : MonoBehaviour
 	{
 		ConfigureSpellMappings();
 	}
-    private AudioManager audioManager;
-    /*private void Awake()
+	private AudioManager audioManager;
+	private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }*/
+    }
 
 	private void Update()
 	{
@@ -31,7 +31,11 @@ public class SpellManagerScript : MonoBehaviour
 			return;
 		}
 
-		_ = Instantiate(Spells[_spellMapping[(element1, element2)]], owner.transform);
+		int index = _spellMapping[(element1, element2)];
+
+		playSound(index);
+
+		_ = Instantiate(Spells[index], owner.transform);
 		///_ = Instantiate(Spells[0], owner.transform); // temp
 	}
 
@@ -63,18 +67,49 @@ public class SpellManagerScript : MonoBehaviour
 
 		_spellMapping.Add((Element.Earth, Element.Earth), 9);
 
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
+	private void playSound(int index)
+	{
+		if (index == 0)
+		{
+			audioManager.PlaySFX(audioManager.fireball);
+		}
+		else if (index == 1)
+		{
+			audioManager.PlaySFX(audioManager.steam);
+		}
+		else if (index == 2)
+		{
+			audioManager.PlaySFX(audioManager.movespeed);
+		}
+		else if (index == 3)
+		{
+			audioManager.PlaySFX(audioManager.firewall);
+		}
+		else if (index == 4)
+		{
+			audioManager.PlaySFX(audioManager.wave);
+		}
+		else if (index == 5)
+		{
+			audioManager.PlaySFX(audioManager.stunprojectile);
+		}
+		else if (index == 6)
+		{
+			audioManager.PlaySFX(audioManager.slowfield);
+		}
+		else if (index == 7)
+		{
+			audioManager.PlaySFX(audioManager.shield);
+		}
+		else if (index == 8)
+		{
+			audioManager.PlaySFX(audioManager.tripleshot);
+		}
+		else if (index == 9)
+		{
+			audioManager.PlaySFX(audioManager.wall);
+		}
 	}
 }
