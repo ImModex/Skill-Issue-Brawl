@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
 
         // The Application loads the Scene in the background at the same time as the current Scene.
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Win", LoadSceneMode.Additive);
 
         // Wait until the last operation fully loads to return anything
         while (!asyncLoad.isDone)
@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        foreach (var rootGameObject in SceneManager.GetSceneByBuildIndex(4).GetRootGameObjects())
+        foreach (var rootGameObject in SceneManager.GetSceneByName("Win").GetRootGameObjects())
         {
             if (rootGameObject.name != "WinController") continue;
             

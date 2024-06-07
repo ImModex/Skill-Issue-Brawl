@@ -14,6 +14,6 @@ public class CreditsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape)) SceneManager.LoadScene(0);
+        if (Input.GetKey(KeyCode.Escape)) SceneManager.LoadScene("Main Menu");
     }
 }

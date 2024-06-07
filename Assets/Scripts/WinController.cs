@@ -20,7 +20,7 @@ public class WinController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape)) SceneManager.LoadScene(0);
+        if (Input.GetKey(KeyCode.Escape)) SceneManager.LoadScene("Main Menu");
     }
 
     public void Display(string score, Material material)

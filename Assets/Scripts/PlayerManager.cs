@@ -67,7 +67,7 @@ public class PlayerManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
 
         // The Application loads the Scene in the background at the same time as the current Scene.
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainScene", LoadSceneMode.Additive);
 
         // Wait until the last operation fully loads to return anything
         while (!asyncLoad.isDone)
@@ -81,7 +81,7 @@ public class PlayerManager : MonoBehaviour
         players.ForEach(player =>
         {
             player.transform.GetChild(3).gameObject.SetActive(true);
-            SceneManager.MoveGameObjectToScene(player, SceneManager.GetSceneByBuildIndex(1));
+            SceneManager.MoveGameObjectToScene(player, SceneManager.GetSceneByName("MainScene"));
         });
         
         // Unload the previous Scene
