@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
 
             var bestPlayer = GetBestPlayer();
             playerStats.TryGetValue(bestPlayer, out var bestPlayerStats);
-            rootGameObject.GetComponent<WinController>().Display(bestPlayerStats!.kills.ToString(), bestPlayer.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Renderer>().material);
+            rootGameObject.GetComponent<WinController>().Display(bestPlayer.GetComponent<Statscript>().killCount.ToString(), bestPlayer.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Renderer>().material);
         }
         
         // Unload the previous Scene
