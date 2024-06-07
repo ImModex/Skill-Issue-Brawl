@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1015995939}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -288,7 +288,16 @@ MonoBehaviour:
   musicSource: {fileID: 2101409257}
   SFXSource: {fileID: 1929052028}
   background: {fileID: 8300000, guid: 9a42806d81ef74fdc8d1adf6785ab8e3, type: 3}
-  spellshot: {fileID: 0}
+  fireball: {fileID: 0}
+  steam: {fileID: 0}
+  movespeed: {fileID: 0}
+  firewall: {fileID: 0}
+  wave: {fileID: 0}
+  stunprojectile: {fileID: 0}
+  slowfield: {fileID: 0}
+  shield: {fileID: 0}
+  tripleshot: {fileID: 0}
+  wall: {fileID: 0}
 --- !u!4 &132194685
 Transform:
   m_ObjectHideFlags: 0

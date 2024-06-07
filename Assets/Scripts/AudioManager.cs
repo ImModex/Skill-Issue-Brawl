@@ -30,7 +30,6 @@ public class AudioManager : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(this.SFXSource);
         if(this.SFXSource == null)
         {
             this.SFXSource = gameObject.transform.GetChild(1).GetComponent<AudioSource>();
@@ -41,17 +40,12 @@ public class AudioManager : MonoBehaviour
     //Mit dieser Funktion k?nnen verschiedene Sound von anderen Scripts aufgerufen werden
     public void PlaySFX(int index)
     {
-        Debug.Log("Test Abort");
-        Debug.Log(this.SFXSource);
         if (index == 0)
 		{
             if (fireball == null)
             {
-            Debug.LogError("Attempted to play a null AudioClip.");
-            return;
+				return;
             }
-            Debug.Log("FireballSound");
-            Debug.Log(fireball);
 			this.SFXSource.PlayOneShot(fireball);
 		}
 		else if (index == 1)
