@@ -18,7 +18,7 @@ public class Statscript : MonoBehaviour
 	public void AddKill()
 	{
 		killCount++;
-		Debug.Log($"Kills: {killCount}");
+		//Debug.Log($"Kills: {killCount}");
 
 		// Trigger the event
 		OnKillCountChanged?.Invoke(killCount);

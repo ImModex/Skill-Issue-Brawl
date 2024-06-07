@@ -22,7 +22,7 @@ public class BasicProjectileScript : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		Debug.Log(caster.name + other.gameObject.name);
+		//Debug.Log(caster.name + other.gameObject.name);
 		if (other.gameObject != caster)
 		{
 			if (other.CompareTag("Player"))

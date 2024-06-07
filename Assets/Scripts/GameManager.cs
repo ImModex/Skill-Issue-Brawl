@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
             {
                 stats!.deaths++;
                 stats!.lastDeath = Time.fixedTime;
-                Debug.Log(stats.deaths);
+                //Debug.Log(stats.deaths);
             }
         }else{
             if (players.FindAll(p => p.activeSelf).Count <= 1) // Last player won
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
             {
                 stats!.deaths++;
                 stats!.lastDeath = Time.fixedTime;
-                Debug.Log(stats.deaths);
+                //Debug.Log(stats.deaths);
             }
 
             player.SetActive(false);

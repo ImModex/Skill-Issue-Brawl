@@ -177,7 +177,7 @@ namespace StarterAssets
 
 				if (SelectedButtons.Count < 2)
 				{
-					Debug.Log("<2 elements selected -> no shot");
+					//Debug.Log("<2 elements selected -> no shot");
 					return;
 				}
 
@@ -185,7 +185,7 @@ namespace StarterAssets
 				StartCoroutine(SpellCooldownTimer());
 				_animator.SetTrigger(_animIDFire);
 				spellManager.Cast(SelectedElements[SelectedButtons[0]], SelectedElements[SelectedButtons[1]], gameObject);
-				Debug.Log($"woohoo i did a shoot with {SelectedElements[SelectedButtons[0]]} and {SelectedElements[SelectedButtons[1]]}. (button selection cleared)");
+				//Debug.Log($"woohoo i did a shoot with {SelectedElements[SelectedButtons[0]]} and {SelectedElements[SelectedButtons[1]]}. (button selection cleared)");
 				SelectedButtons.Clear();
 			}
 		}
@@ -194,28 +194,28 @@ namespace StarterAssets
 		{
 			if (_input.selectElement1)
 			{
-				Debug.Log($"u selected {SelectedElements[Button.North]}. SUBLIME.");
+				//Debug.Log($"u selected {SelectedElements[Button.North]}. SUBLIME.");
 				_input.selectElement1 = false;
 				AddElementToSelection(Button.North);
 			}
 
 			if (_input.selectElement2)
 			{
-				Debug.Log($"u selected {SelectedElements[Button.East]}. SUBLIME.");
+				//Debug.Log($"u selected {SelectedElements[Button.East]}. SUBLIME.");
 				_input.selectElement2 = false;
 				AddElementToSelection(Button.East);
 			}
 
 			if (_input.selectElement3)
 			{
-				Debug.Log($"u selected {SelectedElements[Button.South]}. SUBLIME.");
+				//Debug.Log($"u selected {SelectedElements[Button.South]}. SUBLIME.");
 				_input.selectElement3 = false;
 				AddElementToSelection(Button.South);
 			}
 
 			if (_input.selectElement4)
 			{
-				Debug.Log($"u selected {SelectedElements[Button.West]}. SUBLIME.");
+				//Debug.Log($"u selected {SelectedElements[Button.West]}. SUBLIME.");
 				_input.selectElement4 = false;
 				AddElementToSelection(Button.West);
 			}
@@ -226,7 +226,7 @@ namespace StarterAssets
 			if (_input.clearButtonSelection)
 			{
 				SelectedButtons.Clear();
-				Debug.Log($"Button selection has been cleared: {SelectedButtons.Count == 0}");
+				//Debug.Log($"Button selection has been cleared: {SelectedButtons.Count == 0}");
 				_input.clearButtonSelection = false;
 			}
 		}
@@ -235,7 +235,7 @@ namespace StarterAssets
 		{
 			if (SelectedButtons.Count >= 2)
 			{
-				Debug.Log($"nuh uh. only 2 elements can be selected. current selection {SelectedElements[SelectedButtons[0]]} and {SelectedElements[SelectedButtons[1]]}");
+				//Debug.Log($"nuh uh. only 2 elements can be selected. current selection {SelectedElements[SelectedButtons[0]]} and {SelectedElements[SelectedButtons[1]]}");
 				return;
 			}
 			SelectedButtons.Add(selectedElement);
