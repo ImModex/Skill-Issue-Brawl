@@ -43,15 +43,15 @@ public class KillCountUI : MonoBehaviour
 			if (wizardBodyTransform is not null)
 			{
 				SkinnedMeshRenderer skinnedMeshRenderer = wizardBodyTransform.GetComponent<SkinnedMeshRenderer>();
-				Debug.Log("Wizard Body Transform: " + wizardBodyTransform);
-				Debug.Log("Skinned Mesh Renderer: " + skinnedMeshRenderer);
+				//Debug.Log("Wizard Body Transform: " + wizardBodyTransform);
+				//Debug.Log("Skinned Mesh Renderer: " + skinnedMeshRenderer);
 
 				if (skinnedMeshRenderer is not null)
 				{
 					Color materialColor = skinnedMeshRenderer.material.GetColor("_OuterChlothes");
 					materialColor.a = 1f;
 
-					Debug.Log("Color: " + materialColor);
+					//Debug.Log("Color: " + materialColor);
 
 
 					panelImage.color = materialColor;

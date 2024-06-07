@@ -17,7 +17,7 @@ public class ExplosionScript : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			Debug.Log("Explosion");
+			//Debug.Log("Explosion");
 			HealthScript HP = other.gameObject.GetComponent<HealthScript>();
 			HP.Damage(damage, caster);
 		}

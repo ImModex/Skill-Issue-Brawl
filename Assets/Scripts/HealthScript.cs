@@ -94,7 +94,7 @@ public class HealthScript : MonoBehaviour
 
 		if (HealthBar.value <= 0)
 		{
-			Debug.Log("You died lmao");
+			//Debug.Log("You died lmao");
 			gameManager.RespawnPlayer(gameObject);
 
 			if (Statscript != caster)
@@ -103,7 +103,7 @@ public class HealthScript : MonoBehaviour
 			}
 		}
 
-		Debug.Log(damage + "was Taken");
+		//Debug.Log(damage + "was Taken");
 	}
 
 	public void ResetDOT()
@@ -128,12 +128,20 @@ public class HealthScript : MonoBehaviour
 
 	public void Stun(float stundur)
 	{
-		_ = StartCoroutine(stun(stundur));
+        if(this.gameObject.activeSelf)
+        {
+		_ = StartCoroutine(stun(stundur)); 
+        }
+
 	}
 
 	public void Velocity(float dur, float mult)
 	{
-		_ = StartCoroutine(velocity(dur, mult));
+        if(this.gameObject.activeSelf)
+        {
+            _ = StartCoroutine(velocity(dur, mult));
+        }
+		
 	}
 
 	public void Velocity(float mult)
@@ -148,7 +156,7 @@ public class HealthScript : MonoBehaviour
 		HealthBar.value = ScaleHealthToHealthBar();
 		UpdateHealthBarText();
 
-		Debug.Log("Healed to full");
+		//Debug.Log("Healed to full");
 	}
 
 	private IEnumerator stun(float stundur)
@@ -156,16 +164,16 @@ public class HealthScript : MonoBehaviour
 		Statscript.Stunned = true;
 		yield return new WaitForSeconds(stundur);
 		Statscript.Stunned = false;
-		Debug.Log("Stunned false");
+		//Debug.Log("Stunned false");
 	}
 
 	private IEnumerator velocity(float dur, float mult)
 	{
-		Debug.Log("Ms to slow");
+		//Debug.Log("Ms to slow");
 		Statscript.moveSpeedMultiplyer *= mult;
 		yield return new WaitForSeconds(dur);
 		Statscript.moveSpeedMultiplyer /= mult;
-		Debug.Log("Ms to normal");
+		//Debug.Log("Ms to normal");
 	}
 
 	private IEnumerator damageOverTime()
